@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 
-{% load bootstrap_tags %}
+{% load crispy_forms_tags %}
 
 {% block page_title %}User Login{% endblock %} 
 
@@ -9,7 +9,7 @@
     <h4 class="heading-info text-center mb-3">Sign in to your account</h4>
     <form method="POST">
         {% csrf_token %}
-        {{ login_form | as_bootstrap }}
+        {{ login_form | crispy }}
         <button type="submit" class="btn btn-primary">Login</button>
     </form>
 
