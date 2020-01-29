@@ -3,9 +3,10 @@
 {% load bootstrap_tags %}
 
 {% block page_title %}User Login{% endblock %} 
-{% block page_heading %}Login{% endblock %}
 
 {% block content %}
+<div class="px-3 pt-5 form-bg">
+    <h4 class="heading-info text-center mb-3">Sign in to your account</h4>
     <form method="POST">
         {% csrf_token %}
         {{ login_form | as_bootstrap }}
@@ -13,4 +14,5 @@
     </form>
 
     <p><a href="{% url 'password_reset' %}">Forgot the password?</a></p>
+</div>
 {% endblock %}

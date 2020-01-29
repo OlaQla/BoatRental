@@ -26,6 +26,11 @@ nav, footer {
   letter-spacing: 1px;
 }
 
+.nav-heading{
+  padding-top: 0.5em;
+  font-family: Josefin Sans,Helvetica,Arial,sans-serif;
+}
+
 .nav-link{
   color:#fafafa;
   font-size: 1.2em;
@@ -64,6 +69,7 @@ nav, footer {
 
 .btn-signup {
   color: #fafafa;
+  max-width: 8em;
   line-height: 15px;
   border: 2px solid rgba(58, 133, 191, 0.75);
   border-radius: 40px;
@@ -80,4 +86,27 @@ nav, footer {
 .footer-copyright {
   margin: 0;
   background-color: #1f1f35;
+}
+
+.heading-terms, .heading-info{
+  color: #eb5e1c;
+}
+
+
+
+@media (min-width: 768px) {
+  .form-bg{
+    width: 50%;
+    margin: auto;
+  }
+  .password-reset-info{
+    width: 50%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 992px) {
+}
+
+@media (min-width: 1050px) {
 }

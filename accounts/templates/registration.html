@@ -1,15 +1,18 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
 {% load bootstrap_tags %}
 
-{% block page_title %}Sign Up page{% endblock %} 
+{% block page_title %}Sign Up page{% endblock %}
 {% block page_heading %}Sign Up{% endblock %}
 
 {% block content %}
-    <p>If you already have an account, you can <a href="{% url 'login' %}">Login</a></p>
+<div class="px-3 pt-5 form-bg">
+    <h5 class="pb-5 text-center">If you already have an account, you can <a href="{% url 'login' %}">Login</a></h5>
+    <h4 class=" heading-info text-center mb-3">Sing up with your email address </h4>
     <form method="POST">
         {% csrf_token %}
         {{ registration_form | as_bootstrap }}
         <button type="submit" class="btn btn-primary">Sign up</button>
     </form>
+</div>
 {% endblock %}

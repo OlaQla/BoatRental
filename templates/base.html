@@ -20,8 +20,8 @@
 
 <body>
     <div class="content">
-        <nav class="navbar navbar-expand-sm">
-            <h3 class="mr-3">Luxury Yacht Rental</h3>
+        <nav class="navbar navbar-expand-md fixed-top">
+            <h3 class="nav-heading mr-5">Yachts Rental</h3>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon">
@@ -33,22 +33,24 @@
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item-active nav_item mr-2"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
                     <li class="nav-item  nav_item mr-2"><a class="nav-link" href="#">Search</a></li>
-                    <li class="nav-item nav_item mr-2"><a class="nav-link" href="{% url 'terms' %}">Terms & Conditions</a></li>
+                    <li class="nav-item nav_item mr-2"><a class="nav-link" href="{% url 'terms' %}">Terms &
+                            Conditions</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
                     {% if user.is_authenticated %}
-                    <li class="nav-item mr-2"><a class="nav-link" href="{% url 'profile' %}"><i class="far fa-user-circle">
+                    <li class="nav-item mr-2"><a class="nav-link" href="{% url 'profile' %}"><i
+                                class="far fa-user-circle">
                             </i> {{ user }}'s Profile</a></li>
                     <li class="nav-item mr-2 nav_item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
                     {% else %}
                     <li class="nav-item mr-2 nav_item"><a class="nav-link" href="{% url 'login' %}">Login </a></li>
-                    <li class="nav-item btn btn-signup mr-2"><a class="nav-link" href="{% url 'registration' %}">Sign up</a></li>
+                    <li class="nav-item btn btn-signup mr-2"><a class="nav-link" href="{% url 'registration' %}">Sign
+                            up</a></li>
                     {% endif %}
-                    <li class="nav-item-active mr-2 nav_item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                    <li class="nav-item-active mr-2 nav_item"><a class="nav-link" href="#"><i
+                                class="fas fa-shopping-cart"></i> Cart</a></li>
                 </ul>
             </div>
-           
-            
         </nav>
 
         <h1>
@@ -63,10 +65,11 @@
             {% endfor %}
         </div>
         {% endif %}
+        <main role="main" class="mt-5">
+            {% block content %}
 
-        {% block content %}
-
-        {% endblock %}
+            {% endblock %}
+        </main>
     </div>
     <footer class="page-footer font-small mt-auto pt-3">
         <address class="text-center">
@@ -76,7 +79,7 @@
             Ireland
         </address>
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
-            <a href="#"> Example.com</a>
+            <a href="#"> AleksandraKula.com</a>
         </div>
     </footer>
 
