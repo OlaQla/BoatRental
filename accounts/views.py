@@ -10,6 +10,12 @@ def index(request):
     """
     return render(request, 'index.html')
 
+def terms(request):
+    """
+    Return the terms.html 
+    """
+    return render(request, 'terms.html')
+
 @login_required
 def logout(request):
     """
