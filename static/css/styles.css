@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro|Montserrat|Roboto&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -18,8 +19,62 @@ body {
 }
 
 nav, footer {
+  font-family: Roboto,Helvetica,Arial,sans-serif;
+  font-weight: 200;
   background-color: #272743;
   color: #fafafa;
+  letter-spacing: 1px;
+}
+
+.nav-link{
+  color:#fafafa;
+  font-size: 1.2em;
+  -webkit-transition: all 0.3s;
+  -moz-transition:all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s; 
+}
+
+.nav-link:hover{
+  letter-spacing: 2px;
+  color:#fafafa;
+}
+
+.nav_item ::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 1px;
+  background: white;
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-transition: width 0.3s;
+  -moz-transition:width 0.3s;
+  -ms-transition: width 0.3s;
+  -o-transition: width 0.3s;
+  transition: width 0.3s; 
+}
+
+.nav_item :hover::after {
+  width: 100%;
+}
+.navbar-toggler{
+ color:#fafafa;
+}
+
+.btn-signup {
+  color: #fafafa;
+  line-height: 15px;
+  border: 2px solid rgba(58, 133, 191, 0.75);
+  border-radius: 40px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
+}
+
+.btn-signup:hover {
+  color: #fafafa;
+  background: rgba(58, 133, 191, 0.75);
+  border: 2px solid rgba(58, 133, 191, 0.75);
 }
 
 .footer-copyright {
