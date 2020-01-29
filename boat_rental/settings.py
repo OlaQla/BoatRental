@@ -136,4 +136,6 @@ EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
 
+AUTHENTICATION_BACKENDS = ('accounts.backends.EmailAuth', "django.contrib.auth.backends.ModelBackend")
+
 django_heroku.settings(locals())
