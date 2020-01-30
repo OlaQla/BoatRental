@@ -4,4 +4,26 @@
 
 {% block content %}
 
+{% for boat in boats %}
+<article class="row">
+    <div class="col-md-4">
+        <figure class="card card-product">
+            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ boat.image }}')"></div>
+            <figcaption class="info-wrap">
+                    <h4 class="title">{{ boat.model }}</h4>
+                    <p>{{boat.type}}</p>
+            </figcaption>
+            <div class="bottom-wrap">
+                <a href="" class="btn btn-sm btn-primary float-right">View details
+                </a>	
+                <div class="price-wrap h5">
+                    <span class="price">{{ boat.price }}</span> / day
+                </div> 
+            </div> 
+        </figure>
+    </div> 
+</article>
+
+{% endfor %}
+
 {% endblock %}

@@ -17,10 +17,16 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from accounts.views import index, terms
 from accounts import urls as accounts_urls
+from boats import urls as urls_boats
+from boats.views import all_boats
+from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index, name="index"),
     url(r'^terms$', terms, name="terms"),
     url(r'^accounts/', include(accounts_urls)),
+    url(r'^boats/', include(urls_boats)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]

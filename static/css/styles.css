@@ -105,6 +105,22 @@ nav, footer {
   }
 }
 
+/*PRICE*/
+
+.card-product .info-wrap {
+  overflow: hidden;
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+
+.card-product .price {
+  color: #999;
+}
+
 @media (min-width: 992px) {
 }
 
