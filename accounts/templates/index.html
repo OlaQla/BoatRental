@@ -1,9 +1,134 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block page_title %}Home Page{% endblock %} 
+{% block page_title %}Home Page{% endblock %}
 
 {% block page_heading %}Home{% endblock %}
 
 {% block content %}
+<div class="jumbotron jubotron-image">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+<section>
+  <div class="row m-auto d-flex justify-content-center p-5">
+    <div class="col-md-3">
+      <div class="row d-flex justify-content-center"><i class="icon-home-page fas fa-search"></i></div>
+      <div class="row d-flex justify-content-center">
+        <h4> SEARCH</h4>
+      </div>
+      <div class="row d-flex justify-content-center p-1 text-center">
+        <p clas="text-center ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea animi facere hic amet
+          aliquid quo iste debitis
+          esse maxime, aperiam nihil et illum qui, iusto illo, voluptates incidunt cumque porro.</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row d-flex justify-content-center"><i class="icon-home-page fas far fa-calendar"></i></div>
+      <div class="row d-flex justify-content-center">
+        <h4> BOOK</h4>
+      </div>
+      <div class="row d-flex justify-content-center p-1 text-center">
+        <p clas="text-center p-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat similique inventore
+          officia aliquid sed
+          temporibus reiciendis praesentium iste, neque sapiente magni, eveniet quod, nam tempora ea eaque quia tempore!
+          Voluptate?</p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="row d-flex justify-content-center"><i class="icon-home-page fas fas fa-smile-beam"></i></div>
+      <div class="row d-flex justify-content-center">
+        <h4> ENJOY</h4>
+      </div>
+      <div class="row d-flex justify-content-center p-1 text-center">
+        <p clas="text-center p-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur iste
+          blanditiis, voluptate at
+          suscipit quia minus non facere impedit sunt obcaecati sit quis. Amet repellendus perspiciatis autem facilis
+          odit!</p>
+      </div>
+    </div>
+  </div>
+  <div class=" mb-1 space"></div>
+</section>
+
+<article>
+  <h2 class="text-center py-4 mb-2">FUTURED BOATS</h2>
+  <div class="row m-auto d-flex justify-content-center">
+    <div class="card mr-md-2" style="width: 18rem;">
+      <img src="static/images/futuredBoat1.jpg" class="card-img-top" alt="boat">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+    <div class="card mr-md-2" style="width: 18rem;">
+      <img src="static/images/futuredBoat2.jpg" class="card-img-top" alt="boat">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <img src="static/images/futuredBoat3.jpg" class="card-img-top" alt="boat">
+      <div class="card-body">
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+      </div>
+    </div>
+  </div>
+</article>
+<aside class="references mt-5">
+  <div class="references-content p-3 m-auto">
+    <h2 class="text-center pb-2">REFERENCES</h2>
+    <div class="row m-auto d-flex justify-content-center">
+      <div class="card mr-md-2" style="width: 18rem;">
+        <img src="static/images/avatar1.png" class="card-img-top img-avatar" alt="avatar">
+        <div class="card-body">
+          <div class="row d-flex justify-content-center m-2">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star"></span>
+          </div>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        </div>
+      </div>
+      <div class="card mr-md-2" style="width: 18rem;">
+        <img src="static/images/avatar2.png" class="card-img-top img-avatar" alt="avatar">
+        <div class="card-body">
+          <div class="row d-flex justify-content-center m-2">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+          </div>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        </div>
+      </div>
+      <div class="card" style="width: 18rem;">
+        <img src="static/images/avatar3.png" class="card-img-top img-avatar" alt="avatar">
+        <div class="card-body">
+          <div class="row d-flex justify-content-center m-2">
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star checked"></span>
+          </div>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        </div>
+      </div>
+    </div>
+</aside>
+
+
+
+
 
 {% endblock %}

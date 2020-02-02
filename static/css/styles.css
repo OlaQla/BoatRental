@@ -19,8 +19,8 @@ body {
 }
 
 nav, footer {
-  font-family: Roboto,Helvetica,Arial,sans-serif;
-  font-weight: 200;
+  font-family: Maven Pro,Helvetica,Arial,sans-serif;
+  font-weight: 100;
   background-color: #272743;
   color: #fafafa;
   letter-spacing: 1px;
@@ -92,7 +92,48 @@ nav, footer {
   color: #eb5e1c;
 }
 
+.jumbotron{
+  min-height: 35em;
+  margin:0;
+  background-image: url("../images/jumbotron.jpg");
+}
+.icon-home-page{
+padding-bottom: 0.3em;
+font-size: 5em;
+color: #eb5e1c;
+}
+.space{
+  width: 70%;
+  margin: auto;
+  border-top: solid 1.5px rgba(0, 0, 0, 0.5);
+}
 
+.references{
+  padding-top: 8em;
+  padding-bottom:5em;
+  min-height: 30em;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)), url("../images/boats.jpg") no-repeat fixed bottom;
+  background-color: blue; 
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.references-content{
+  
+  width: 75%;
+  background-color: #fafafa;
+}
+
+.img-avatar{
+    border-radius: 50%;
+}
+
+.checked{
+  color: orange;
+}
 
 @media (min-width: 768px) {
   .form-bg{
@@ -106,7 +147,6 @@ nav, footer {
 }
 
 /*PRICE*/
-
 .card-product .info-wrap {
   overflow: hidden;
   padding: 15px;
