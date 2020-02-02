@@ -9,7 +9,6 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  
 }
 .content {
   flex: 1 0 auto;  
@@ -17,7 +16,9 @@ body {
 .footer {
   flex-shrink: 0;
 }
-
+h1, h2, h3, h4, h5, h6{
+  font-family: Maven Pro,Helvetica,Arial,sans-serif;
+}
 nav, footer {
   font-family: Maven Pro,Helvetica,Arial,sans-serif;
   font-weight: 100;
@@ -145,21 +146,15 @@ color: #eb5e1c;
     margin: auto;
   }
 }
+.catalog-container{
+  padding-top: 5em;
+}
 
+.boat-card-item{
+  color: #eb5e1c;
+}
 /*PRICE*/
-.card-product .info-wrap {
-  overflow: hidden;
-  padding: 15px;
-  border-top: 1px solid #eee;
-}
-.card-product .bottom-wrap {
-  padding: 15px;
-  border-top: 1px solid #eee;
-}
 
-.card-product .price {
-  color: #999;
-}
 
 @media (min-width: 992px) {
 }

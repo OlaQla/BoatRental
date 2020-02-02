@@ -1,29 +1,29 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 
-{% block page_title %}Search boat{% endblock %} 
+{% block page_title %}Search boat{% endblock %}
 
 {% block content %}
 
 {% for boat in boats %}
-<article class="row m-auto">
-    <div class="col-md-4">
-        <figure class="card card-product">
-            <div class="product" style="background-image: url('{{ MEDIA_URL }}{{ boat.image }}')"></div>
-            <figcaption class="info-wrap">
-                    <h4 class="title">{{ boat.model }}</h4>
-                    <p>{{boat.type}}</p>
-            </figcaption>
-            <div class="bottom-wrap">
-                <a href="" class="btn btn-sm btn-primary float-right">View details
-                </a>	
-                <div class="price-wrap h5">
-                    <span class="price">{{ boat.price }}</span> / day
-                </div> 
-            </div> 
-        </figure>
-    </div> 
-</article>
+<div class="row row-flex m-auto catalog-container">
 
+    <div class="card-group p-1 p-md-5">
+        {% for boat in boats %}
+        <a href="">
+            <div class="card col-md-4 p-0">
+                <img class="card-img-top" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
+                <div class="card-body">
+                    <div class="row">
+                        <h4 class="card-title col-5 col-md-6 text-uppercase boat-card-item">{{ boat.model }}</h4>
+                        <span class="price col-7 col-md-6 font-weight-bold h4 boat-card-item">&#8364
+                            {{ boat.price }}/day</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
 {% endfor %}
 
 {% endblock %}
