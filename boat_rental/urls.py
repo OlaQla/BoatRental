@@ -21,6 +21,7 @@ from boats import urls as urls_boats
 from boats.views import all_boats
 from django.views import static
 from .settings import MEDIA_ROOT
+from cart import urls as urls_cart
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,4 +30,5 @@ urlpatterns = [
     url(r'^accounts/', include(accounts_urls)),
     url(r'^boats/', include(urls_boats)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
+    url(r'^cart/', include(urls_cart)),
 ]

@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static from staticfiles %}
+{%  load bootstrap_tags %}
 
 {% block page_title %}Boat details{% endblock %}
 
@@ -25,7 +27,15 @@
             <div class="col-12 col-md-8">
 
             </div>
-            
+            <form method="post" action="{% url 'add_to_cart' boat.id %}">
+                {% csrf_token %}
+                <div class="input-group">
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" type="submit">Add</button>
+                    </span>
+                </div>
+            </form>
         </div>
             <hr>
         </div>
