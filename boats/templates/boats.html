@@ -9,18 +9,20 @@
 
     <div class="card-group p-1 p-md-5">
         {% for boat in boats %}
-        <a href="{% url 'boat_details' boat_id=boat.id%}">
-            <div class="card col-md-4 p-0">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
-                <div class="card-body">
-                    <div class="row">
-                        <h4 class="card-title col-5 col-md-6 text-uppercase boat-card-item">{{ boat.model }}</h4>
-                        <span class="price col-7 col-md-6 font-weight-bold h4 boat-card-item">&#8364
-                            {{ boat.price }}/day</span>
+       
+            <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
+                <div class="card col-md-4 p-0">
+                    <img class="card-img-top" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
+                    <div class="card-body">
+                        <div class="row">
+                            <h4 class="card-title col-5 col-md-6 text-uppercase boat-card-item">{{ boat.model }}</h4>
+                            <span class="price col-7 col-md-6 font-weight-bold h4 boat-card-item">&#8364
+                                {{ boat.price }}/day</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </a>
+            </a>
+        
         {% endfor %}
     </div>
 </div>

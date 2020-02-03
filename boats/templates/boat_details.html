@@ -1,8 +1,35 @@
 {% extends 'base.html' %}
-{% extends 'base.html' %}
 
 {% block page_title %}Boat details{% endblock %}
 
 {% block content %}
+<div class="m-auto px-3 pb-4 catalog-container">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="card-img-top img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
+        </div>
+        <div class="col-md-6">
+            <hgroup>
+                <h1 class="text-uppercase text-center">{{ boat.model }}</h1>
+                <h2 class="product-price">&#8364 {{ boat.price }}/day</h2>
+            </hgroup>
+            <hr>
+            <div class="row pb-5">
+            <div class="col-12 col-md-4">
+                <p><span class="font-weight-bold">Type:</span> {{ boat.boatType }}</p>
+                <p><span class="font-weight-bold">Lenght: </span>{{ boat.lenght }}</p>
+                <p><span class="font-weight-bold">Guests: </span>{{ boat.maxPassangers }}</p>
+                <p><span class="font-weight-bold">Cabins: </span>{{ boat.cabins }}</p>
+                <p><span class="font-weight-bold">Built date: </span>{{boat.builtDate}}</p>
+            </div>
+            <div class="col-12 col-md-8">
 
+            </div>
+            
+        </div>
+            <hr>
+        </div>
+
+    </div>
+</div>
 {% endblock %}
