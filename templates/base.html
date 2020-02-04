@@ -17,11 +17,10 @@
         type="text/css" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}" type="text/css">
 
-     <!-------------------- style block for custom backround ----->
-     <style type="text/css">
-        {% block styles %} {% endblock %}
-    </style>
-</head>
+    
+     {% block javascripts %}
+     {% endblock %}
+    </head>
 
 <body>
     <div class="content">
@@ -71,13 +70,13 @@
 
 
         {% if messages %}
-        <div class="alert alert-warning">
+        <div class="alert alert-warning m-0 pt-4">
             {% for message in messages %}
             {{ message }}
             {% endfor %}
         </div>
         {% endif %}
-        <main role="main" class="mt-2">
+        <main role="main">
             {% block content %}
 
             {% endblock %}
