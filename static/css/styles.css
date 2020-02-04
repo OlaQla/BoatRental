@@ -68,7 +68,7 @@ nav, footer {
  color:#fafafa;
 }
 
-.btn-signup {
+.btn-signup  {
   color: #fafafa;
   max-width: 8em;
   line-height: 15px;
@@ -85,10 +85,12 @@ nav, footer {
 }
 
 .btn-checkout{
+  font-size: 1.2rem;
   margin-top:1rem;
-  padding: 1rem;
+  padding:1rem  1.6rem ;
+  letter-spacing: 1.5px;
   color: #fafafa;
-  max-width: 10em;
+  width: 10rem;
   border: 2px solid rgba(58, 133, 191, 0.75);
   border-radius: 40px;
   background:  #272743;
@@ -185,12 +187,28 @@ a:link, a:visited{
     margin: auto;
   }
 }
-.catalog-container, .cart-wrap{
+.catalog-container, .cart-wrap, .terms-container{
   padding-top: 5em;
 }
-
+.btn-login{
+  color:#fafafa;
+  background-color: #eb5e1c;
+}
+.btn-register{
+  background-color: #eb5e1c;
+  color:#fafafa;
+}
 .boat-card-item{
   color: #eb5e1c;
+}
+
+.total{
+  color: #eb5e1c;
+  font-size: 1.5rem;
+}
+#remove-cart-item{
+  font-size: 1.5rem;
+  
 }
 
 .btn-times{

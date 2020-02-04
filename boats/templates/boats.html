@@ -3,28 +3,25 @@
 {% block page_title %}Search boat{% endblock %}
 
 {% block content %}
-
-<div class="row row-flex mx-5 catalog-container">
-
-    <div class="card-deck">
+<div class="container">
+    <div class="row justify-content-center catalog-container">
         {% for boat in boats %}
-        <div class="card col-md-4 p-0">
+        <div class="card mr-md-4 mb-md-4" style="width: 20rem;">
             <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
                 <img class="card-img-top" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
                 <div class="card-body">
                     <div class="row">
-                        <h4 class="card-title col-5 col-md-6 text-uppercase boat-card-item">{{ boat.model }}</h4>
-                        <span class="price col-7 col-md-6 font-weight-bold h4 boat-card-item">&#8364
+                        <h4 class="card-title col-5 col-md-5 text-uppercase boat-card-item">{{ boat.model }}</h4>
+                        <span class="price col-7 col-md-7 font-weight-bold h4 boat-card-item">&#8364
                             {{ boat.price }}/day</span>
                     </div>
                 </div>
             </a>
         </div>
-
-
         {% endfor %}
     </div>
 </div>
+
 
 
 {% endblock %}
