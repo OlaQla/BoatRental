@@ -187,17 +187,14 @@ a:link, a:visited{
     margin: auto;
   }
 }
-.catalog-container, .cart-wrap, .terms-container{
+.catalog-container, .cart-wrap, .terms-container, .checkout-container{
   padding-top: 5em;
 }
-.btn-login{
+.btn-login, .btn-register, .btn-reset{
   color:#fafafa;
   background-color: #eb5e1c;
 }
-.btn-register{
-  background-color: #eb5e1c;
-  color:#fafafa;
-}
+
 .boat-card-item{
   color: #eb5e1c;
 }
