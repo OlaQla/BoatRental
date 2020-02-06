@@ -108,7 +108,7 @@ nav, footer {
   background-color: #1f1f35;
 }
 
-.heading-terms, .heading-info{
+.heading-terms, .heading-info, .heading-checkout{
   color: #eb5e1c;
 }
 
@@ -157,7 +157,7 @@ color: #eb5e1c;
 a:link, a:visited{
   text-decoration: none;
 }
-.card{
+.card-item{
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -169,7 +169,7 @@ a:link, a:visited{
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-.card:hover{
+.card-item:hover{
   -moz-transform: scale(1.02);
   -o-transform: scale(1.02);
   -ms-transform: scale(1.02);
@@ -190,7 +190,7 @@ a:link, a:visited{
 .catalog-container, .cart-wrap, .terms-container, .checkout-container{
   padding-top: 5em;
 }
-.btn-login, .btn-register, .btn-reset{
+.btn-login, .btn-register, .btn-reset, .btn-pay{
   color:#fafafa;
   background-color: #eb5e1c;
 }
@@ -213,7 +213,6 @@ a:link, a:visited{
   border:none;
   background-color: transparent;
 }
-
 
 
 

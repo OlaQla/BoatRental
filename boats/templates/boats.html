@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row justify-content-center catalog-container">
         {% for boat in boats %}
-        <div class="card mr-md-4 mb-md-4" style="width: 20rem;">
+        <div class="card card-item mr-md-4 mb-md-4" style="width: 20rem;">
             <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
                 <img class="card-img-top" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
                 <div class="card-body">

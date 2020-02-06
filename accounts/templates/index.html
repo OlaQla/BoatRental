@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block page_title %}Home Page{% endblock %}
 
 {% block page_heading %}Home{% endblock %}
@@ -56,21 +56,21 @@
   <h2 class="text-center py-4 mb-2">FUTURED BOATS</h2>
   <div class="row m-auto d-flex justify-content-center">
     <div class="card mr-md-2" style="width: 18rem;">
-      <img src="static/images/futuredBoat1.jpg" class="card-img-top" alt="boat">
+      <img src="{% static 'images/futuredBoat1.jpg' %}" class="card-img-top" alt="boat">
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
       </div>
     </div>
     <div class="card mr-md-2" style="width: 18rem;">
-      <img src="static/images/futuredBoat2.jpg" class="card-img-top" alt="boat">
+      <img  src="{% static 'images/futuredBoat2.jpg' %}" class="card-img-top" alt="boat">
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
       </div>
     </div>
     <div class="card" style="width: 18rem;">
-      <img src="static/images/futuredBoat3.jpg" class="card-img-top" alt="boat">
+      <img src="{% static 'images/futuredBoat3.jpg' %}" class="card-img-top" alt="boat">
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
@@ -83,7 +83,7 @@
     <h2 class="text-center pb-2">REFERENCES</h2>
     <div class="row m-auto d-flex justify-content-center">
       <div class="card mr-md-2" style="width: 18rem;">
-        <img src="static/images/avatar1.png" class="card-img-top img-avatar" alt="avatar">
+        <img src="{% static 'images/avatar1.png' %}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
           <div class="row d-flex justify-content-center m-2">
             <span class="fa fa-star checked"></span>
@@ -97,7 +97,7 @@
         </div>
       </div>
       <div class="card mr-md-2" style="width: 18rem;">
-        <img src="static/images/avatar2.png" class="card-img-top img-avatar" alt="avatar">
+        <img src="{% static 'images/avatar2.png' %}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
           <div class="row d-flex justify-content-center m-2">
             <span class="fa fa-star checked"></span>
@@ -111,7 +111,7 @@
         </div>
       </div>
       <div class="card" style="width: 18rem;">
-        <img src="static/images/avatar3.png" class="card-img-top img-avatar" alt="avatar">
+        <img src="{% static 'images/avatar3.png' %}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
           <div class="row d-flex justify-content-center m-2">
             <span class="fa fa-star checked"></span>
