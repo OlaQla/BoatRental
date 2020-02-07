@@ -30,7 +30,7 @@ def checkout(request):
                 total += quantity * boat.price
                 order_line_item = OrderLineItem(
                     order=order,
-                    product=boat,
+                    boat=boat,
                     quantity=quantity
                 )
                 order_line_item.save()
