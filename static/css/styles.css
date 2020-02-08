@@ -116,6 +116,7 @@ nav, footer {
   min-height: 35em;
   margin:0;
   background-image: url("../images/jumbotron.jpg");
+  color:#272743;
 }
 .icon-home-page{
 padding-bottom: 0.3em;
@@ -142,8 +143,7 @@ color: #eb5e1c;
 }
 
 .references-content{
-  
-  width: 75%;
+  width: 90%;
   background-color: #fafafa;
 }
 
@@ -186,11 +186,15 @@ a:link, a:visited{
     width: 50%;
     margin: auto;
   }
+
+  .references-content{
+    width: 75%;
+  }
 }
-.catalog-container, .cart-wrap, .terms-container, .checkout-container{
+.catalog-container, .cart-wrap, .terms-container, .checkout-container, .top-padding-container{
   padding-top: 5em;
 }
-.btn-login, .btn-register, .btn-reset, .btn-pay{
+.btn-login, .btn-register, .btn-reset, .btn-pay, .btn-orange{
   color:#fafafa;
   background-color: #eb5e1c;
 }
@@ -214,7 +218,10 @@ a:link, a:visited{
   background-color: transparent;
 }
 
-
+.image-orders{
+  width: 8rem;
+  height: 6rem;
+}
 
 @media (min-width: 992px) {
 }

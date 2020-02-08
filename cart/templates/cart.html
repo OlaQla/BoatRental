@@ -4,40 +4,52 @@
 
 {% block content %}
 <div class="container cart-wrap px-4">
-<div class="row d-flex justify-content-center">
-    <div class="col-md-8">
-        <h3 class="text-uppercase font-weight-bold p-4">shopping cart</h3>
-        {% for item in cart_items %}
-        <div class="row">
-            <div class="col-md-5 px-0">
-                <img class=" img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ item.boat.image }}" alt="boat image">
-            </div>
-            <div class="col-md-7 bg-light">
-                <form method="post" action="{% url 'remove_from_cart' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit" id="remove-cart-item" class="btn-times float-right"><i
-                            class="fas fa-times"></i></button>
-                </form>
-                <h3 class="text-uppercase font-weight-bold mb-4">{{ item.boat.model }}</h3>
-                <p>Price per day: &#8364 {{ item.boat.price }}</p>
-                <p>Number of days: {{ item.quantity }}</p>
-                <h5 class="font-weight-bold">Subtotal: &#8364 {{ item.value }}</h5>
-            </div>
-        </div>
-        <hr>
-        {% endfor %}
-        <div class="row pb-4">
-            <div class="col-6"></div>
-            <div class="col-md-6 text-right">
-                <span class="text-uppercase total font-weight-bold">Total:</span>
-                <span class="text-uppercase total"> &#8364 {{ total }} </span>
-            </div>
-        </div>
-        <div class="row pb-5">
-            <div class="col-6"></div>
-            <div class="col-6 text-right"><a href="{% url 'checkout' %}" class="btn-checkout" role="button">Checkout</a></div>
+    <div style="display:none" class="empty-cart pt-5">
+        <h2 class="text-center mb-4">Your cart is empty.</h2>
+        <div class="text-center mb-3">
+            <a href="{% url 'boats' %}" class="btn btn-orange py-3"
+                    role="button">Go shopping</a>
         </div>
     </div>
-</div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <h3 class="text-uppercase font-weight-bold p-4">shopping cart</h3>
+            {% for item in cart_items %}
+            <div class="row">
+                <div class="col-md-5 px-0">
+                    <img class=" img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ item.boat.image }}" alt="boat image">
+                </div>
+                <div class="col-md-7 bg-light">
+                    <form method="post" action="{% url 'remove_from_cart' item.id %}">
+                        {% csrf_token %}
+                        <button type="submit" id="remove-cart-item" class="btn-times float-right"><i
+                                class="fas fa-times"></i></button>
+                    </form>
+                    <h3 class="text-uppercase font-weight-bold mb-4">{{ item.boat.model }}</h3>
+                    <p>Price per day: &#8364 {{ item.boat.price }}</p>
+                    <p>Number of days: {{ item.quantity }}</p>
+                    <h5 class="font-weight-bold">Subtotal: &#8364 {{ item.value }}</h5>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+            <div class="row pb-5">
+                <div class="col-md-6 text-center mb-3">
+                    <a href="{% url 'boats' %}" class="btn btn-orange py-3"
+                            role="button">Continue shopping</a>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="row d-flex justify-content-center py-0">
+                        <span class="text-uppercase total font-weight-bold">Total:</span>
+                        <span class="text-uppercase total"> &#8364 {{ total }} </span>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <a href="{% url 'checkout' %}" class="btn-checkout"
+                                role="button">Checkout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
