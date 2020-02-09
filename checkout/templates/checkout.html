@@ -14,12 +14,12 @@
 
 {% block content %}
 
-<div class="container checkout-container px-0">
+<div class="container top-padding-container px-0">
     <div class="row">
         <div class="col-md-4 py-md-5">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title text-uppercase font-weight-bold heading-checkout">cart summary</h5>
+                    <h5 class="card-title text-uppercase font-weight-bold heading-orange">cart summary</h5>
                     <hr>
                     {% for item in cart_items %}
                     <div class="row">
@@ -37,7 +37,7 @@
                     {% endfor %}
                     <hr>
                     <div class="row d-flex justify-content-center">
-                        <h5 class="heading-checkout text-uppercase font-weight-bold">Total:</h5>
+                        <h5 class="heading-orange text-uppercase font-weight-bold">Total:</h5>
                         <h5 class="font-weight-bold">&#8364 {{ total }}</h5>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                     <div class="col-md-7 pr-md-1 pl-md-0">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase font-weight-bold heading-checkout">payment details
+                                <h5 class="card-title text-uppercase font-weight-bold heading-orange">payment details
                                 </h5>
                                 <hr>
                                 <div class="form-group">
@@ -61,7 +61,7 @@
                     <div class="col-md-5 pr-md-1 pl-md-0">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title text-uppercase font-weight-bold heading-checkout">card details
+                                <h5 class="card-title text-uppercase font-weight-bold heading-orange">card details
                                 </h5>
                                 <hr>
                                 <img class="card-img-top img-thumbnail image-fluid"
@@ -72,7 +72,7 @@
                             </div>
                             {% csrf_token %}
                             <div class="form-group col-md-12 d-flex justify-content-center">
-                                <input class=" btn btn-pay" id="submit_payment_btn" name="commit" type="submit"
+                                <input class=" btn btn-orange" id="submit_payment_btn" name="commit" type="submit"
                                     value="Submit Payment">
                             </div>
                         </div>
