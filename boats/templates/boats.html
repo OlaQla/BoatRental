@@ -6,33 +6,23 @@
 <div class="container">
     <div class="row justify-content-center catalog-container">
         <!-- boat cards with link to card details-->
-<div class="container mb-5 ">
-    <div class="row justify-content-center top-padding-container">
-        {% for boat in boats %}
-        <div class="card card-item shadow mr-md-4 mb-4" style="width: 21rem;">
-            <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
-                <img class="card-img-top" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
-                <div class="card-body">
-                    <div class="row">
-                        <h4 class="card-title col-5 col-md-5 text-uppercase boat-card-item">{{ boat.model }}</h4>
-                        <span class="price col-7 col-md-7 font-weight-bold h4 boat-card-item">&#8364
-                            {{ boat.price }}/day</span>
-                    </div>
-                </div> <!-- end card body-->
-            </a> <!--end link -->
-        </div> <!-- end card -->
-        {% endfor %}
-    </div> <!-- end row -->
-</div> <!-- end container -->
-                <img class="img-responsive image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
-                <div class="card-body text-center">
-                        <h4 class="card-title text-uppercase heading-orange">{{ boat.model }}</h4>
-                        <h4 class="price font-weight-bold heading-orange">&#8364
-                            {{ boat.price }}/day</h4>  
+        <div class="container mb-5 ">
+            <div class="row justify-content-center top-padding-container">
+                {% for boat in boats %}
+                <div class="card card-item shadow mr-md-4 mb-4" style="width: 21rem;">
+                    <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
+                        <img class="img-responsive image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
+                        <div class="card-body text-center">
+                            <h4 class="card-title text-uppercase heading-orange">{{ boat.model }}</h4>
+                            <h4 class="price font-weight-bold heading-orange">&#8364
+                                {{ boat.price }}/day</h4>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        {% endfor %}
+                {% endfor %}
+            </div> <!-- end row -->
+        </div> <!-- end container -->
+
     </div>
 </div>
 
