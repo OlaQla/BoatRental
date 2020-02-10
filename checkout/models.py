@@ -21,6 +21,8 @@ class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, null=False)
     boat = models.ForeignKey(Boats, null=False)
     quantity = models.IntegerField(blank=False)
+    from_date = models.IntegerField(blank=False)
+    to_date = models.IntegerField(blank=False)
 
     def __str__(self):
         return "{0} {1} @ {2}".format(

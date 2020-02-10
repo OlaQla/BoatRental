@@ -13,7 +13,8 @@ def cart_contents(request):
     total = 0
     boat_count = 0
     
-    for id, quantity in cart.items():
+    for id, data in cart.items():
+        quantity = data[2]
         boat = get_object_or_404(Boats, pk=id)
         total += quantity * boat.price
         boat_count += 1

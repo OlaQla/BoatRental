@@ -7,7 +7,7 @@ from django.conf import settings
 from django.utils import timezone
 from .models import OrderLineItem
 from boats.models import Boats
-
+from datetime import datetime
 
 stripe.api_key = settings.STRIPE_SECRET
 
@@ -25,13 +25,15 @@ def checkout(request):
 
             cart = request.session.get('cart', {})
             total = 0
-            for id, quantity in cart.items():
+            for id, data in cart.items():
                 boat = get_object_or_404(Boats, pk=id)
-                total += quantity * boat.price
+                total += data[2] * boat.price
                 order_line_item = OrderLineItem(
                     order=order,
                     boat=boat,
-                    quantity=quantity
+                    quantity=data[2], 
+                    from_date=datetime.strptime(data[0], "%Y-%m-%d").timestamp(),
+                    to_date=datetime.strptime(data[1], "%Y-%m-%d").timestamp()
                 )
                 order_line_item.save()
             

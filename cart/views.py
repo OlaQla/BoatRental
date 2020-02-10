@@ -14,7 +14,7 @@ def add_to_cart(request, id):
   
 
     cart = request.session.get('cart', {})
-    cart[id] = cart.get(id, quantity)
+    cart[id] = cart.get(id, (startDay.strftime("%Y-%m-%d"), endDay.strftime("%Y-%m-%d"), quantity))
 
     request.session['cart'] = cart
     return redirect(reverse('boats'))
