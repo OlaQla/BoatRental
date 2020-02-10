@@ -9,6 +9,8 @@
     <h4 class="heading-info pt-5 text-center font-weight-bold mb-3">Sign in to your account</h4>
     <p class="text-center">Please login to checkout.</p>
     <p class="text-center">Don't have an account yet? Register <a href="{% url 'registration' %}">here.</a></p>
+    
+    <!--login form-->
     <form method="POST">
         {% csrf_token %}
         {{ login_form | crispy }}
@@ -17,6 +19,7 @@
         </div>
     </form>
 
-    <p><a href="{% url 'password_reset' %}">Forgot the password?</a></p>
+    <!-- reset password link-->
+    <p><a href="{% url 'password_reset' %}">Forgot the password?</a></p> 
 </div>
 {% endblock %}

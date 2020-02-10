@@ -5,6 +5,7 @@
 {% block content %}
 <div class="container">
     <div class="row justify-content-center catalog-container">
+        <!-- boat cards with link to card details-->
         {% for boat in boats %}
         <div class="card card-item mr-md-4 mb-md-4" style="width: 20rem;">
             <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
@@ -15,13 +16,11 @@
                         <span class="price col-7 col-md-7 font-weight-bold h4 boat-card-item">&#8364
                             {{ boat.price }}/day</span>
                     </div>
-                </div>
-            </a>
-        </div>
+                </div> <!-- end card body-->
+            </a> <!--end link -->
+        </div> <!-- end card -->
         {% endfor %}
-    </div>
-</div>
-
-
+    </div> <!-- end row -->
+</div> <!-- end container -->
 
 {% endblock %}

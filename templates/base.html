@@ -20,7 +20,9 @@
     </head>
 
 <body>
-    <div class="content">
+    <div class="content"> <!--div content used to make footer sticky to the bottom of the page-->
+       
+        <!--navbar-->
         <nav class="navbar navbar-expand-md fixed-top">
             <h3 class="nav-heading mr-5">Boats Rental</h3>
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -30,6 +32,7 @@
                 </span>
             </button>
 
+            <!--navbar dropdown / links container -->
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="nav navbar-nav mr-auto">
                     <li class="nav-item-active nav_item mr-2"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
@@ -38,28 +41,33 @@
                             Conditions</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right ml-auto">
-                    {% if user.is_authenticated %}
+                    <!--profile and logout link visible only to logged in users  -->
+                    {% if user.is_authenticated %} 
                     <li class="nav-item mr-2"><a class="nav-link" href="{% url 'profile' %}"><i
                                 class="far fa-user-circle">
                             </i> My orders</a></li>
                     <li class="nav-item mr-2 nav_item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                   
+                    <!-- login and sign up visible only for logout users-->
                     {% else %}
                     <li class="nav-item mr-2 nav_item"><a class="nav-link" href="{% url 'login' %}">Login </a></li>
                     <li class="nav-item btn btn-signup mr-2"><a class="nav-link" href="{% url 'registration' %}">Sign
                             up</a></li>
                     {% endif %}
                     
+                    <!--cart -->
                     <li class="nav-item-active mr-2 nav_item">
                         <a class="nav-link" href="{% url 'view_cart' %}">
                             <i class="fas fa-shopping-cart"></i>Cart
+                            <!-- badge shows how many item is in cart -->
                             {% if boat_count > 0 %}
                             <label class="badge badge-pill badge-danger">{{ boat_count }}</label>
                             {% endif %}
                         </a>
                     </li>
-                </ul>
-            </div>
-        </nav>
+                </ul> <!--end list of  links -->
+            </div> <!-- end navbar dropdown / links container-->
+        </nav> <!-- end navbar-->
 
         <h1>
             {% block page_heading %}{% endblock %}
@@ -73,16 +81,20 @@
             {% endfor %}
         </div>
         {% endif %}
+
+        <!-- main section  -->
         <main role="main">
             {% block content %}
 
             {% endblock %}
         </main>
-    </div>
+    </div> <!-- end div content --> 
+
+    <!-- footer -->
     <footer class="page-footer font-small mt-auto pt-3">
         <address class="text-center">
-            Yacht Rental LTD <br>
-            Visit us at:Yacht@Rental.com<br>
+            Boat Rental LTD <br>
+            Visit us at:Boat@Rental.com<br>
             Box 564, Dublin<br>
             Ireland
         </address>

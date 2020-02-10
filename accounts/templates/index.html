@@ -10,7 +10,9 @@
     <h3 class="display-4 jumbotron-text">Your adventure starts here!</h3>
     <p class="lead jumbotron-text">Hire luxury boat in best price!</p>
   </div>
-</div>
+</div> <!--div end jumbotron -->
+
+<!-- search, book, enjoy section-->
 <section>
   <div class="row m-auto d-flex justify-content-center p-5">
     <div class="col-md-3">
@@ -21,7 +23,7 @@
       <div class="row d-flex justify-content-center p-1 text-center">
         <p clas="text-center ">Explore our privately owned, worldwide fleet.</p>
       </div>
-    </div>
+    </div> <!-- end search -->
     <div class="col-md-3">
       <div class="row d-flex justify-content-center"><i class="icon-home-page fas far fa-calendar"></i></div>
       <div class="row d-flex justify-content-center">
@@ -30,7 +32,7 @@
       <div class="row d-flex justify-content-center p-1 text-center">
         <p clas="text-center p-1">Set your dates for your boating adventure</p>
       </div>
-    </div>
+    </div> <!-- end book -->
     <div class="col-md-3">
       <div class="row d-flex justify-content-center"><i class="icon-home-page fas fas fa-smile-beam"></i></div>
       <div class="row d-flex justify-content-center">
@@ -39,14 +41,17 @@
       <div class="row d-flex justify-content-center p-1 text-center">
         <p clas="text-center p-1">Your Boatsetter experience begins!</p>
       </div>
-    </div>
-  </div>
-  <div class=" mb-1 space"></div>
-</section>
+    </div><!-- end enjoy -->
+  </div> <!--end row -->
+  <div class=" mb-1 space"></div> <!--line space between sections-->
+</section><!--end section-->
 
-<article>
+<!--  futured boats section-->
+<article> 
   <h2 class="text-center py-4 mb-2">FUTURED BOATS</h2>
   <div class="row m-auto d-flex justify-content-center">
+
+    <!--futured boat cord-->
     <div class="card mr-md-2" style="width: 18rem;">
       <img src="{% static 'images/futuredBoat1.jpg' %}" class="card-img-top" alt="boat">
       <div class="card-body">
@@ -54,6 +59,8 @@
           content.</p>
       </div>
     </div>
+
+    <!--futured boat cord-->
     <div class="card mr-md-2" style="width: 18rem;">
       <img src="{% static 'images/futuredBoat2.jpg' %}" class="card-img-top" alt="boat">
       <div class="card-body">
@@ -61,19 +68,27 @@
           content.</p>
       </div>
     </div>
+
+    <!--futured boat cord-->
     <div class="card" style="width: 18rem;">
       <img src="{% static 'images/futuredBoat3.jpg' %}" class="card-img-top" alt="boat">
       <div class="card-body">
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
           content.</p>
       </div>
-    </div>
-  </div>
-</article>
+    </div> <!--end card -->
+  </div> <!--end row -->
+</article><!-- end article -->
+
+
+<!-- references section -->
 <aside class="references mt-5">
   <div class="references-content p-3 m-auto">
     <h2 class="text-center pb-2">REFERENCES</h2>
+    
     <div class="row m-auto d-flex justify-content-center">
+     
+      <!-- card references -->
       <div class="card mr-md-2" style="width: 18rem;">
         <img src="{% static 'images/avatar1.png' %}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
@@ -89,6 +104,7 @@
             great experience and opportunity to charter with your company.</p>
         </div>
       </div>
+      <!-- card references -->
       <div class="card mr-md-2" style="width: 18rem;">
         <img src="{% static 'images/avatar2.png' %}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
@@ -103,6 +119,8 @@
             clean, everything worked and was great to sail. Will hire again.</p>
         </div>
       </div>
+
+      <!-- card references -->
       <div class="card" style="width: 18rem;">
         <img src="{% static 'images/avatar3.png' %}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
@@ -117,12 +135,8 @@
             could just relax. We had a BBQ on board and a beautiful swim at a private beach. Would definitely go again!
           </p>
         </div>
-      </div>
-    </div>
-</aside>
-
-
-
-
+      </div> <!--end card-->
+    </div> <!-- end row -->
+</aside> <!-- end aside -->
 
 {% endblock %}

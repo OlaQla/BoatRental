@@ -5,42 +5,50 @@
 {% block page_title %}Boat details{% endblock %}
 
 {% block content %}
+
+<!--container addin top padding to content-->
 <div class="m-auto px-3 pb-4 catalog-container">
     <div class="row">
+        <!--boat image-->
         <div class="col-md-6">
             <img class="card-img-top img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
         </div>
+
         <div class="col-md-6">
+            <!--headings Model and Price -->
             <hgroup>
                 <h1 class="text-uppercase text-center">{{ boat.model }}</h1>
-                <h2 class="product-price text-center">&#8364 {{ boat.price }}/day</h2>
+                <h2 class="text-center">&#8364 {{ boat.price }}/day</h2>
             </hgroup>
             <hr>
+            <!-- additional boat info -->
             <div class="row pb-5">
-            <div class="col-12 col-md-4">
-                <p><span class="font-weight-bold">Type:</span> {{ boat.boatType }}</p>
-                <p><span class="font-weight-bold">Lenght: </span>{{ boat.lenght }}</p>
-                <p><span class="font-weight-bold">Guests: </span>{{ boat.maxPassangers }}</p>
-                <p><span class="font-weight-bold">Cabins: </span>{{ boat.cabins }}</p>
-                <p><span class="font-weight-bold">Built date: </span>{{boat.builtDate}}</p>
-            </div>
-            <div class="col-12 col-md-8">
-
-            </div>
-            <form method="post" action="{% url 'add_to_cart' boat.id %}">
-                {% csrf_token %}
-                <div class="input-group">
-                    <input type="date" name="startDay">
-                    <input type="date" name="endDay">
-                    <span class="input-group-btn">
-                        <button class="btn btn-success" type="submit">Add</button>
-                    </span>
+                <div class="col-12 col-md-4">
+                    <p><span class="font-weight-bold">Type:</span> {{ boat.boatType }}</p>
+                    <p><span class="font-weight-bold">Lenght: </span>{{ boat.lenght }}</p>
+                    <p><span class="font-weight-bold">Guests: </span>{{ boat.maxPassangers }}</p>
+                    <p><span class="font-weight-bold">Cabins: </span>{{ boat.cabins }}</p>
+                    <p><span class="font-weight-bold">Built date: </span>{{boat.builtDate}}</p>
                 </div>
-            </form>
-        </div>
-            <hr>
-        </div>
+                <div class="col-12 col-md-8">
 
-    </div>
-</div>
+                </div>
+
+                <!-- rent dates picker -->
+                <form method="post" action="{% url 'add_to_cart' boat.id %}">
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input type="date" name="startDay">
+                        <input type="date" name="endDay">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">Add</button>
+                        </span>
+                    </div>
+                </form>
+            </div> <!-- end div additional boat info-->
+            <hr>
+        </div> <!-- end boat details column -->
+    </div><!-- end row -->
+</div><!--end container-->
+
 {% endblock %}
