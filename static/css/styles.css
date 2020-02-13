@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro|Montserrat|Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans|Maven+Pro|Montserrat|Roboto&display=swap");
 * {
   box-sizing: border-box;
 }
@@ -11,51 +11,57 @@ body {
   height: 100vh;
 }
 .content {
-  flex: 1 0 auto;  
+  flex: 1 0 auto;
 }
 .footer {
   flex-shrink: 0;
 }
-h1, h2, h3, h4, h5, h6{
-  font-family: Maven Pro,Helvetica,Arial,sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
 }
 
-.top-padding-container{
+.top-padding-container {
   padding-top: 5em;
 }
 
-.heading-orange{
+.heading-orange {
   color: #eb5e1c;
 }
 
 /* navbar and footer styling */
 
-nav, footer {
-  font-family: Maven Pro,Helvetica,Arial,sans-serif;
+nav,
+footer {
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
   font-weight: 100;
   background-color: #272743;
   color: #fafafa;
   letter-spacing: 1px;
 }
 
-.nav-heading{
+.nav-heading {
   padding-top: 0.5em;
-  font-family: Josefin Sans,Helvetica,Arial,sans-serif;
+  font-family: Josefin Sans, Helvetica, Arial, sans-serif;
 }
 
-.nav-link{
-  color:#fafafa;
+.nav-link {
+  color: #fafafa;
   font-size: 1.2rem;
   -webkit-transition: all 0.3s;
-  -moz-transition:all 0.3s;
+  -moz-transition: all 0.3s;
   -ms-transition: all 0.3s;
   -o-transition: all 0.3s;
-  transition: all 0.3s; 
+  transition: all 0.3s;
 }
 
-.nav-link:hover{
+.nav-link:hover {
   letter-spacing: 2px;
-  color:#fafafa;
+  color: #fafafa;
 }
 
 .nav_item ::after {
@@ -66,17 +72,17 @@ nav, footer {
   background: white;
   background: rgba(255, 255, 255, 0.7);
   -webkit-transition: width 0.3s;
-  -moz-transition:width 0.3s;
+  -moz-transition: width 0.3s;
   -ms-transition: width 0.3s;
   -o-transition: width 0.3s;
-  transition: width 0.3s; 
+  transition: width 0.3s;
 }
 
 .nav_item :hover::after {
   width: 100%;
 }
-.navbar-toggler{
- color:#fafafa;
+.navbar-toggler {
+  color: #fafafa;
 }
 
 .footer-copyright {
@@ -85,57 +91,59 @@ nav, footer {
 }
 
 /* Home page styles */
-.jumbotron{
+.jumbotron {
   min-height: 35em;
-  margin:0;
+  margin: 0;
   background-image: url("../images/jumbotron.jpg");
-  color:#272743;
+  color: #272743;
 }
-.icon-home-page{
-padding-bottom: 0.3em;
-font-size: 5em;
-color: #eb5e1c;
+.icon-home-page {
+  padding-bottom: 0.3em;
+  font-size: 5em;
+  color: #eb5e1c;
 }
 
-.space{
+.space {
   width: 70%;
   margin: auto;
   border-top: solid 1.5px rgba(0, 0, 0, 0.5);
 }
 
-.references{
+.references {
   padding-top: 8em;
-  padding-bottom:5em;
+  padding-bottom: 5em;
   min-height: 30em;
-  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)), url("../images/boats.jpg") no-repeat fixed bottom;
-  background-color: blue; 
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+  background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)),
+    url("../images/boats.jpg") no-repeat fixed bottom;
+  background-color: blue;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
-.references-content{
+.references-content {
   width: 90%;
   background-color: #fafafa;
 }
 
-.checked{ /* rating stars color */
+.checked {
+  /* rating stars color */
   color: orange;
 }
 
-.img-avatar{
-    border-radius: 50%;
+.img-avatar {
+  border-radius: 50%;
 }
 
-a:link, a:visited{
+a:link,
+a:visited {
   text-decoration: none;
 }
 
-
 /* boats - catalog styles */
-.card-item{
+.card-item {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
@@ -147,7 +155,7 @@ a:link, a:visited{
   -webkit-transform: scale(1);
   transform: scale(1);
 }
-.card-item:hover{
+.card-item:hover {
   -moz-transform: scale(1.02);
   -o-transform: scale(1.02);
   -ms-transform: scale(1.02);
@@ -155,21 +163,22 @@ a:link, a:visited{
   transform: scale(1.02);
 }
 
-.img-responsive{
+.img-responsive {
   width: 100%;
   height: 15rem;
 }
 
 /* Forms styles */
 
-  .password-reset-info{
-    width: 50%;
-    margin: auto;
-  }
+.password-reset-info {
+  width: 50%;
+  margin: auto;
+}
 
- /* buttons styles */
+/* buttons styles */
 
-.btn-signup  { /* Sign up button in navbar */
+.btn-signup {
+  /* Sign up button in navbar */
   color: #fafafa;
   max-width: 8em;
   line-height: 15px;
@@ -185,58 +194,60 @@ a:link, a:visited{
   border: 2px solid rgba(58, 133, 191, 0.75);
 }
 
-.btn-checkout{ /* Checkout button */
+.btn-checkout {
+  /* Checkout button */
   font-size: 1.2rem;
-  margin-top:1rem;
-  padding:1rem  1.6rem ;
+  margin-top: 1rem;
+  padding: 1rem 1.6rem;
   letter-spacing: 1.5px;
   color: #fafafa;
   width: 10rem;
   border: 2px solid rgba(58, 133, 191, 0.75);
   border-radius: 40px;
-  background:  #272743;
+  background: #272743;
   transition: all 0.3s ease 0s;
 }
 
-.btn-checkout:hover{
+.btn-checkout:hover {
   color: #fafafa;
   background: rgba(58, 133, 191, 0.75);
   border: 2px solid rgba(58, 133, 191);
 }
 
-.btn-times{ /* remove item from card */
+.btn-times {
+  /* remove item from card */
   outline: none;
-  border:none;
+  border: none;
   background-color: transparent;
 }
 
-.btn-orange{
-  color:#fafafa;
+.btn-orange {
+  color: #fafafa;
   background-color: #eb5e1c;
 }
 
 /* checkout styles */
-.total{
+.total {
   color: #eb5e1c;
   font-size: 1.5rem;
 }
-#remove-cart-item{
+#remove-cart-item {
   font-size: 1.5rem;
 }
 
-.image-orders{
+.image-orders {
   width: 8rem;
   height: 6rem;
 }
 
 /* media responsive design */
 @media (min-width: 768px) {
-  .form-bg{
+  .form-bg {
     width: 50%;
     margin: auto;
   }
 
-  .references-content{
+  .references-content {
     width: 75%;
   }
 }
@@ -244,4 +255,31 @@ a:link, a:visited{
 }
 
 @media (min-width: 1050px) {
+}
+
+/* styling calendar */
+
+.table{
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+}
+.month {
+  background-color: #272743;
+  color: #fafafa;
+}
+
+.weekdays {
+  
+  background-color: #ddd;
+}
+.table td {
+  border: 1px solid grey;
+  background-color: #ff8652;
+}
+
+.available {
+  background-color: #6da06f !important;
+}
+
+.available.selected{
+  background-color: blue !important;
 }

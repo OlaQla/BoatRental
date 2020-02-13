@@ -8,48 +8,195 @@
 
 <!--container addin top padding to content-->
 <div class="m-auto px-3 pb-4 catalog-container">
-<div class="m-auto px-3 pb-4 top-padding-container">
-    <div class="row">
-        <!--boat image-->
-        <div class="col-md-6">
-            <img class="card-img-top img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
-        </div>
+    <div class="m-auto px-3 pb-4 top-padding-container">
+        <div class="row">
+            <!--boat image-->
+            <div class="col-md-6">
+                <img class="card-img-top img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}"
+                    alt="boat image">
+            </div>
 
-        <div class="col-md-6">
-            <!--headings Model and Price -->
-            <hgroup>
-                <h1 class="text-uppercase text-center">{{ boat.model }}</h1>
-                <h2 class="text-center">&#8364 {{ boat.price }}/day</h2>
-            </hgroup>
-            <hr>
-            <!-- additional boat info -->
-            <div class="row pb-5">
-                <div class="col-12 col-md-4">
-                    <p><span class="font-weight-bold">Type:</span> {{ boat.boatType }}</p>
-                    <p><span class="font-weight-bold">Lenght: </span>{{ boat.lenght }}</p>
-                    <p><span class="font-weight-bold">Guests: </span>{{ boat.maxPassangers }}</p>
-                    <p><span class="font-weight-bold">Cabins: </span>{{ boat.cabins }}</p>
-                    <p><span class="font-weight-bold">Built date: </span>{{boat.builtDate}}</p>
-                </div>
-                <div class="col-12 col-md-8">
-
-                </div>
-
-                <!-- rent dates picker -->
-                <form method="post" action="{% url 'add_to_cart' boat.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <input type="date" name="startDay">
-                        <input type="date" name="endDay">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit">Add</button>
-                        </span>
+            <div class="col-md-6">
+                <!--headings Model and Price -->
+                <hgroup>
+                    <h1 class="text-uppercase text-center">{{ boat.model }}</h1>
+                    <h2 class="text-center">&#8364 {{ boat.price }}/day</h2>
+                </hgroup>
+                <hr>
+                <!-- additional boat info -->
+                <div class="row pb-5">
+                    <div class="col-12 py-3 text-center">
+                        <span class="pr-3"><span class="font-weight-bold">Type:</span> {{ boat.boatType }}</span>
+                        <span class="pr-3"><span class="font-weight-bold">Lenght: </span>{{ boat.lenght }}</span>
+                        <span class="pr-3"><span class="font-weight-bold">Guests: </span>{{ boat.maxPassangers }}</span>
+                        <span class="pr-3"><span class="font-weight-bold">Cabins: </span>{{ boat.cabins }}</span>
+                        <span class="pr-3"><span class="font-weight-bold">Built date: </span>{{boat.builtDate}}</span>
                     </div>
-                </form>
-            </div> <!-- end div additional boat info-->
-            <hr>
-        </div> <!-- end boat details column -->
-    </div><!-- end row -->
-</div><!--end container-->
 
-{% endblock %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="month text-center h4 py-4" colspan="7">February</th>
+                            </tr>
+                            <tr class="weekdays text-center">
+                                <th scope="col">Mon</th>
+                                <th scope="col">Tues</th>
+                                <th scope="col">Wedn</th>
+                                <th scope="col">Thur</th>
+                                <th scope="col">Frid</th>
+                                <th scope="col">Sat</th>
+                                <th scope="col">Sun</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar">
+                            <tr>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                                <td>12</td>
+                                <td>13</td>
+                                <td>14</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>18</td>
+                                <td>19</td>
+                                <td>20</td>
+                                <td>21</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>23</td>
+                                <td>24</td>
+                                <td>25</td>
+                                <td>26</td>
+                                <td>27</td>
+                                <td>28</td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- rent dates picker -->
+                    <form method="post" action="{% url 'add_to_cart' boat.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input id="startDay" type="date" name="startDay">
+                            <input id="endDay" type="date" name="endDay">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="submit">Add</button>
+                            </span>
+                        </div>
+                    </form>
+                </div> <!-- end div additional boat info-->
+                <hr>
+            </div> <!-- end boat details column -->
+        </div><!-- end row -->
+    </div>
+    <!--end container-->
+
+    {% endblock %}
+
+    {% block javascripts %}
+
+    <script tyle="text/javascript">
+
+        const dateForField = (date) => {
+            calDay = ("0" + date.getDate()).slice(-2);
+            calMonth = ("0" + (date.getMonth() + 1)).slice(-2);
+            calYear = date.getFullYear()
+            return calYear+"-"+(calMonth)+"-"+(calDay)
+        }
+
+        $(document).ready(function () {
+            date = new Date()
+            boat_id = $(window.location.href.split("/")).last()[0];
+            $.ajax({
+                url: `/boats/availability/${boat_id}/${date.getFullYear()}/${date.getMonth()}`,
+
+            }).done(function (data) {
+                $("#calendar").find("td").each(function (index) {
+                    $(this).text(data[index].day)
+
+                    if (data[index].in_month) {
+                        $(this).addClass("in_month")
+                    }
+                    if (data[index].available) {
+                        $(this).addClass("available")
+                    }
+
+                })
+
+            });
+
+            let isFirst = true;
+            let newStartDate = new Date();
+            let newEndDate = new Date();
+            
+            $(document).on('click', '.in_month.available', function() {
+                
+                currDate = new Date()
+                
+                calDay = $(this).text()
+                calMonth = currDate.getMonth();
+                calYear = currDate.getFullYear()
+               
+                if (isFirst) { 
+                    newStartDate = new Date(calYear, calMonth, calDay)
+                    $("#startDay").val(dateForField(newStartDate))
+                    $('#endDay').val('')
+                    $('.selected').removeClass('selected')
+                    $(this).addClass('selected')
+
+                } else {
+                    newEndDate = new Date(calYear, calMonth, calDay) 
+                    if (newEndDate > newStartDate){
+                        $("#endDay").val(dateForField(newEndDate))
+                        
+                    }
+                    else {
+                        [newStartDate, newEndDate] = [newEndDate, newStartDate]
+                        $("#startDay").val(dateForField(newStartDate))
+                        $("#endDay").val(dateForField(newEndDate))
+                    }
+                    $(this).addClass('selected')
+                    const $allAvailable = $(".available")
+                    const indices = $(".selected").toArray().map(x => $allAvailable.index(x));
+                    $allAvailable.slice(indices[0], indices[1]).addClass("selected")
+
+                    const $allSelected = $(".selected")
+                    if(parseInt($allSelected.eq(-1).text()) - parseInt($allSelected.eq(0).text()) + 1 !== $allSelected.length) {
+                        $allSelected.removeClass("selected")
+                        $("#startDay").val('')
+                        $("#endDay").val('')
+                    }
+                } 
+                
+                isFirst = !isFirst;
+            });
+        })
+
+
+
+    </script>
+    {% endblock %}
