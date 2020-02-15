@@ -4,6 +4,8 @@
 
 {% block content %}
 <div class="container top-padding-container px-4">
+
+    <!-- info for customer when cart is empty -->
     <div style="display:none" class="empty-cart pt-5">
         <h2 class="text-center mb-4">Your cart is empty.</h2>
         <div class="text-center mb-3">
@@ -11,15 +13,20 @@
                     role="button">Go shopping</a>
         </div>
     </div>
+
+    <!-- Shopping cart -->
     <div class="row d-flex justify-content-center">
-        <div class="col-md-8">
+        <div class="not-empty-cart col-md-8">
             <h3 class="text-uppercase font-weight-bold p-4">shopping cart</h3>
+
+            <!--items in shopping cart-->
             {% for item in cart_items %}
-            <div class="row">
-                <div class="col-md-5 px-0">
+            <div class="row"> 
+                <div class="col-md-5 px-0 item-in-cart">
                     <img class=" img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ item.boat.image }}" alt="boat image">
                 </div>
                 <div class="col-md-7 bg-light">
+                    <!--button to remove item from cart-->
                     <form method="post" action="{% url 'remove_from_cart' item.id %}">
                         {% csrf_token %}
                         <button type="submit" id="remove-cart-item" class="btn-times float-right"><i
@@ -34,15 +41,20 @@
             <hr>
             {% endfor %}
             <div class="row pb-5">
-                <div class="col-md-6 text-center mb-3">
+                <!---continue shopping cart that redirect customer to catalog -->
+                <div class="col-md-6 text-center pt-md-5  mb-3">
                     <a href="{% url 'boats' %}" class="btn btn-orange py-3"
                             role="button">Continue shopping</a>
                 </div>
                 <div class="col-md-6 mb-3">
+                    <!---total value of the cart -->
                     <div class="row d-flex justify-content-center py-0">
                         <span class="text-uppercase total font-weight-bold">Total:</span>
                         <span class="text-uppercase total"> &#8364 {{ total }} </span>
                     </div>
+
+                    <!--go to checkout button - redirect customer to checkout 
+                        or login page if customer is not loggedinn-->
                     <div class="row d-flex justify-content-center">
                         <a href="{% url 'checkout' %}" class="btn-checkout"
                                 role="button">Checkout</a>
@@ -52,4 +64,21 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+
+<script tyle="text/javascript">
+$(document).ready(function(){
+   
+    var items = $('.item-in-cart');
+    if (items.length > 0) {
+        $('.not-empty-cart').show();
+        $('.empty-cart').hide();
+    } else {
+        $('.empty-cart').show();
+        $('.not-empty-cart').hide();
+    }
+})
+</script>
 {% endblock %}
