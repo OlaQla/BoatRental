@@ -14,10 +14,11 @@ def cart_contents(request):
     boat_count = 0
     
     for id, data in cart.items():
-        quantity = data[2]
-        boat = get_object_or_404(Boats, pk=id)
-        total += quantity * boat.price
-        boat_count += 1
-        cart_items.append({'id': id, 'quantity': quantity, 'value': quantity * boat.price, 'boat': boat})
+        for subid, subitem in enumerate(data): 
+            quantity = subitem[2]
+            boat = get_object_or_404(Boats, pk=id)
+            total += quantity * boat.price
+            boat_count += 1
+            cart_items.append({'id': id, 'subid': subid, 'quantity': quantity, 'value': quantity * boat.price, 'boat': boat})
     
     return {'cart_items': cart_items, 'total': total, 'boat_count': boat_count}

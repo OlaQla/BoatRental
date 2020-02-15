@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-7 bg-light">
                     <!--button to remove item from cart-->
-                    <form method="post" action="{% url 'remove_from_cart' item.id %}">
+                    <form method="post" action="{% url 'remove_from_cart' item.id item.subid %}">
                         {% csrf_token %}
                         <button type="submit" id="remove-cart-item" class="btn-times float-right"><i
                                 class="fas fa-times"></i></button>

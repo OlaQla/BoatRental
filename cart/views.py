@@ -10,20 +10,26 @@ def add_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
     startDay = datetime.strptime(request.POST.get('startDay'), "%Y-%m-%d")
     endDay = datetime.strptime(request.POST.get('endDay'), "%Y-%m-%d")
-    quantity = abs((endDay - startDay).days)
+    quantity = abs((endDay - startDay).days) + 1
   
-
     cart = request.session.get('cart', {})
-    cart[id] = cart.get(id, (startDay.strftime("%Y-%m-%d"), endDay.strftime("%Y-%m-%d"), quantity))
+    current = cart.get(id, [])
+    current.append((startDay.strftime("%Y-%m-%d"), endDay.strftime("%Y-%m-%d"), quantity))
+    cart[id] = current
 
     request.session['cart'] = cart
     return redirect(reverse('boats'))
 
 
-def remove_from_cart(request, id):
+def remove_from_cart(request, id, subid):
     """ Remove item from cart """
     cart = request.session.get('cart', {})
-    cart.pop(id)
+    current = cart.get(id)
+    if(len(current) == 1): 
+        cart.pop(id)
+    else:
+        del current[int(subid)]
+        cart[id] = current
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
