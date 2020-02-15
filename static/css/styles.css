@@ -165,8 +165,40 @@ a:visited {
 
 .img-responsive {
   width: 100%;
-  height: 15rem;
+  height: 14rem;
 }
+
+.details{
+  font-size: 1.3rem;
+}
+/* styling calendar */
+
+.table{
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+}
+.month {
+  background-color: #272743;
+  color: #fafafa;
+}
+
+.table th.month{
+  padding: 3rem 0;
+}
+.weekdays {
+  background-color: #ddd;
+}
+
+.table td {
+  border: 1px solid grey;
+  background-color: #ff8652;
+}
+.available {
+  background-color: #6da06f !important;
+}
+.available.selected{
+  background-color:#79a7d3 !important;
+}
+
 
 /* Forms styles */
 
@@ -246,7 +278,6 @@ a:visited {
     width: 50%;
     margin: auto;
   }
-
   .references-content {
     width: 75%;
   }
@@ -257,29 +288,3 @@ a:visited {
 @media (min-width: 1050px) {
 }
 
-/* styling calendar */
-
-.table{
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
-}
-.month {
-  background-color: #272743;
-  color: #fafafa;
-}
-
-.weekdays {
-  
-  background-color: #ddd;
-}
-.table td {
-  border: 1px solid grey;
-  background-color: #ff8652;
-}
-
-.available {
-  background-color: #6da06f !important;
-}
-
-.available.selected{
-  background-color: blue !important;
-}
