@@ -2,9 +2,7 @@
 {% load static from staticfiles %}
 {%  load bootstrap_tags %}
 
-
 {% block page_title %}{{ user }}'s Profile{% endblock %}
-
 
 {% block content %}
 <div class="top-padding-container container">
@@ -18,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            {% for item in cart_items %}
+            {% for item in orders %}
             <tr>
                 <th scope="row">111</th>
                 <td>
@@ -29,7 +27,7 @@
                     </figure>
                 </td>
                 <td class="font-weight-bold h5">{{ item.quantity }}</td>
-                <td class="font-weight-bold h5">&#8364 {{ total }}</td>
+                <td class="font-weight-bold h5">&#8364 {{ item.subtotal }}</td>
             </tr>
             {% endfor %}
         </tbody>

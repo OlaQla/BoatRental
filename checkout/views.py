@@ -25,17 +25,21 @@ def checkout(request):
 
             cart = request.session.get('cart', {})
             total = 0
-            for id, data in cart.items():
+            for id, boat_orders in cart.items():
                 boat = get_object_or_404(Boats, pk=id)
-                total += data[2] * boat.price
-                order_line_item = OrderLineItem(
-                    order=order,
-                    boat=boat,
-                    quantity=data[2], 
-                    from_date=datetime.strptime(data[0], "%Y-%m-%d").timestamp(),
-                    to_date=datetime.strptime(data[1], "%Y-%m-%d").timestamp()
-                )
-                order_line_item.save()
+                for individual_order in boat_orders:
+                    quantity = individual_order[2]
+                    total += quantity * boat.price
+                    order_line_item = OrderLineItem(
+                        user=request.user,
+                        order=order,
+                        boat=boat,
+                        quantity=quantity, 
+                        subtotal=quantity * boat.price,
+                        from_date=datetime.strptime(individual_order[0], "%Y-%m-%d").timestamp(),
+                        to_date=datetime.strptime(individual_order[1], "%Y-%m-%d").timestamp()
+                    )
+                    order_line_item.save()
             
             try:
                 customer = stripe.Charge.create(
