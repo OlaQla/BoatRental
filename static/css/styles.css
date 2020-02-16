@@ -129,8 +129,7 @@ footer {
 }
 
 .checked {
-  /* rating stars color */
-  color: orange;
+  color: orange;  /* rating stars color */
 }
 
 .img-avatar {
@@ -142,7 +141,12 @@ a:visited {
   text-decoration: none;
 }
 
-/* boats - catalog styles */
+/* boats - cards and detailed view styles */
+
+.active-navy input[type=text]:focus:not([readonly]) {
+  border: 1px solid #272743;
+  box-shadow: 0 0 0 1.3px #272743;
+}
 .card-item {
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -165,7 +169,11 @@ a:visited {
 
 .img-responsive {
   width: 100%;
-  height: 14rem;
+  height: 16rem;
+} 
+
+.img-details {
+  height: 18rem;
 }
 
 .details{
@@ -268,8 +276,13 @@ a:visited {
 }
 
 .image-orders {
-  width: 8rem;
+  width: 10rem;
   height: 6rem;
+}
+
+.image-cart {
+  width: 23rem;
+  height: 14rem;
 }
 
 /* media responsive design */
@@ -280,6 +293,10 @@ a:visited {
   }
   .references-content {
     width: 75%;
+  }
+
+  .img-details {
+    height: 30rem;
   }
 }
 @media (min-width: 992px) {

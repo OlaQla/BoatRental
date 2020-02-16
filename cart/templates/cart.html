@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container top-padding-container px-4">
 
-    <!-- info for customer when cart is empty -->
+    <!-- info for user when cart is empty -->
     <div style="display:none" class="empty-cart pt-5">
         <h2 class="text-center mb-4">Your cart is empty.</h2>
         <div class="text-center mb-3">
@@ -22,8 +22,8 @@
             <!--items in shopping cart-->
             {% for item in cart_items %}
             <div class="row"> 
-                <div class="col-md-5 px-0 item-in-cart">
-                    <img class=" img-thumbnail image-fluid" src="{{ MEDIA_URL }}{{ item.boat.image }}" alt="boat image">
+                <div class="col-md-5 px-0 item-in-cart text-center">
+                    <img class="img-thumbnail image-fluid image-cart" src="{{ MEDIA_URL }}{{ item.boat.image }}" alt="boat image">
                 </div>
                 <div class="col-md-7 bg-light">
                     <!--button to remove item from cart-->
@@ -60,10 +60,10 @@
                                 role="button">Checkout</a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </div> <!--end row with buttons-->
+        </div> <!--end column shopping cart-->
+    </div> <!--end row shopping cart-->
+</div><!--end container-->
 {% endblock %}
 
 {% block javascripts %}
