@@ -18,7 +18,7 @@ from django.contrib import admin
 from accounts.views import index, terms
 from accounts import urls as accounts_urls
 from boats import urls as urls_boats
-from boats.views import all_boats
+from boats.views import find_boats
 from django.views import static
 from .settings import MEDIA_ROOT
 from cart import urls as urls_cart

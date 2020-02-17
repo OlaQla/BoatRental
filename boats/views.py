@@ -8,9 +8,41 @@ from django.core.serializers import serialize
 import json
 from datetime import date, datetime, timedelta
 from collections import namedtuple
+from distutils.util import strtobool
 
-def all_boats(request):
+def find_boats(request):
+    request_min_cabins = request.GET.get("min_cabins")
+    min_cabins = request_min_cabins if request_min_cabins is not None else 0
+
+    request_min_passangers = request.GET.get("min_passangers")
+    min_passangers = request_min_passangers if request_min_passangers is not None else 0
+
+    request_search_name = request.GET.get("search_name")
+    search_name = request_search_name if request_search_name is not None else ""
+
+    request_include_sailboat = request.GET.get("include_sailboat")
+    include_sailboat = bool(strtobool(request_include_sailboat)) if request_include_sailboat is not None else True
+    
+    request_include_powerboat = request.GET.get("include_powerboat")
+    include_powerboat = bool(strtobool(request_include_powerboat)) if request_include_powerboat is not None else True
+
+    request_include_catamaran = request.GET.get("include_catamaran")
+    include_catamaran = bool(strtobool(request_include_catamaran)) if request_include_catamaran is not None else True
+
+    request_include_motoryacht = request.GET.get("include_motoryacht")
+    include_motoryacht = bool(strtobool(request_include_motoryacht)) if request_include_motoryacht is not None else True
+
     boats = Boats.objects.all()
+    boats = boats.filter(cabins__gte=min_cabins)
+    boats = boats.filter(maxPassangers__gte=min_passangers)
+    boats = boats.filter(model__icontains=search_name)
+    
+    boats = [boat for boat in list(boats) if \
+        (include_sailboat is True and boat.boatType == "sailboat") or \
+        (include_powerboat is True and boat.boatType == "powerboat") or \
+        (include_catamaran is True and boat.boatType == "sailing catamaran") or \
+        (include_motoryacht is True and boat.boatType == "motor yacht")]
+    
     return render(request, "boats.html", {"boats": boats})
 
 def boat_details(request, boat_id):
