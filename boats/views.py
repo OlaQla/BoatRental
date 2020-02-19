@@ -12,25 +12,27 @@ from distutils.util import strtobool
 
 def find_boats(request):
     request_min_cabins = request.GET.get("min_cabins")
-    min_cabins = request_min_cabins if request_min_cabins is not None else 0
+    min_cabins = int(request_min_cabins) if request_min_cabins is not None and request_min_cabins is not '' else 0
 
     request_min_passangers = request.GET.get("min_passangers")
-    min_passangers = request_min_passangers if request_min_passangers is not None else 0
+    min_passangers = int(request_min_passangers) if request_min_passangers is not None and request_min_passangers is not '' else 0
 
     request_search_name = request.GET.get("search_name")
     search_name = request_search_name if request_search_name is not None else ""
 
     request_include_sailboat = request.GET.get("include_sailboat")
-    include_sailboat = bool(strtobool(request_include_sailboat)) if request_include_sailboat is not None else True
-    
+    include_sailboat = bool(strtobool(request_include_sailboat)) if request_include_sailboat not in [None, ''] else True
+    print(include_sailboat)
+    print(request_include_sailboat)
+
     request_include_powerboat = request.GET.get("include_powerboat")
-    include_powerboat = bool(strtobool(request_include_powerboat)) if request_include_powerboat is not None else True
+    include_powerboat = bool(strtobool(request_include_powerboat)) if request_include_powerboat is not None and not '' else True
 
     request_include_catamaran = request.GET.get("include_catamaran")
-    include_catamaran = bool(strtobool(request_include_catamaran)) if request_include_catamaran is not None else True
+    include_catamaran = bool(strtobool(request_include_catamaran)) if request_include_catamaran is not None and not '' else True
 
     request_include_motoryacht = request.GET.get("include_motoryacht")
-    include_motoryacht = bool(strtobool(request_include_motoryacht)) if request_include_motoryacht is not None else True
+    include_motoryacht = bool(strtobool(request_include_motoryacht)) if request_include_motoryacht is not None and not '' else True
 
     boats = Boats.objects.all()
     boats = boats.filter(cabins__gte=min_cabins)

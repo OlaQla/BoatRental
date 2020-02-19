@@ -5,58 +5,74 @@
 {% block content %}
 <div class="container top-padding-container">
     <!-- search section -->
-    <div class="row d-flex justify-content-center mb-5">
-        <div class="col-md-3 active-navy px-3 mb-3 mx-md-3">
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-        </div>
-        <div class="col-md-3 mx-md-3">
-            <div class="row px-3 mb-3 active-navy">
-                <div class="col-md-5 px-0">
-                    <span class="font-weight-bold">Min Guests:</span>
-                </div>
-                <div class="col-md-7 px-0"><input type="text" class="form-control" placeholder="Min Guests"></div>
+    <form class="pt-md-5">
+        <div class="row d-flex justify-content-center mb-5">
+            <div class="col-md-3 active-navy px-3 mb-3 mx-md-3">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search_name">
             </div>
-            <div class="row px-3 mb-3 active-navy">
-                <div class="col-md-5 px-0">
-                    <span class="font-weight-bold">Min Cabins:</span>
+            <div class="col-md-3 mx-md-3">
+                <div class="row px-3 mb-3 active-navy">
+                    <div class="col-md-5 px-0">
+                        <span class="font-weight-bold">Min Guests:</span>
+                    </div>
+                    <div class="col-md-7 px-0"><input type="text" class="form-control" placeholder="Min Guests" name="min_passangers"></div>
                 </div>
-                <div class="col-md-7 px-0">
-                    <input type="text" class="form-control" placeholder="Min Cabin">
+                <div class="row px-3 mb-3 active-navy">
+                    <div class="col-md-5 px-0">
+                        <span class="font-weight-bold">Min Cabins:</span>
+                    </div>
+                    <div class="col-md-7 px-0">
+                        <input type="text" class="form-control" placeholder="Min Cabin" name="min_cabins">
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-3 form-check ml-3 mx-md-3">
-            <div class="row px-3 mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Sailboat
-                </label>
-            </div>
-            <div class="row px-3 mb-3">
-                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                <label class="form-check-label" for="defaultCheck1">
-                    Powerboat
-                </label>
-            </div>
-        </div>
-    </div> <!--end search section-->
-    <hr>
-    <div class="row d-flex justify-content-center">
-        <!-- boat cards with link to card details-->
-        {% for boat in boats %}
-        <div class="card card-item shadow mr-md-2 mb-4" style="width: 23rem;">
-            <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
-                <img class="img-responsive image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
-                <div class="card-body text-center">
-                    <h4 class="card-title text-uppercase heading-orange">{{ boat.model }}</h4>
-                    <h4 class="price font-weight-bold heading-orange">&#8364
-                        {{ boat.price }}/day</h4>
+            <div class="col-md-3 form-check ml-3 mx-md-3">
+                <div class="row px-3 mb-3">
+                    <input class="form-check-input" type="checkbox" value="True" id="defaultCheck1" name="include_sailboat">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Sailboat
+                    </label>
                 </div>
-            </a>
-        </div>
-        <!--end div card-->
-        {% endfor %}
-    </div><!-- end row -->
+                <div class="row px-3 mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="include_powerboat">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Powerboat
+                    </label>
+                </div>
+                <div class="row px-3 mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="include_catamaran">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Catamaran
+                    </label>
+                </div>
+                <div class="row px-3 mb-3">
+                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="include_motoryacht">
+                    <label class="form-check-label" for="defaultCheck1">
+                        Motor Yacht
+                    </label>
+                </div>
+            </div>
+                <button type="submit" class="btn btn-lg btn-search btn-orange">SEARCH</button>  
+    </form>
+</div>
+<!--end search section-->
+<hr>
+<div class="row d-flex justify-content-center">
+    <!-- boat cards with link to card details-->
+    {% for boat in boats %}
+    <div class="card card-item shadow mr-md-2 mb-4" style="width: 23rem;">
+        <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
+            <img class="img-responsive image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
+            <div class="card-body text-center">
+                <h4 class="card-title text-uppercase heading-orange">{{ boat.model }}</h4>
+                <h4 class="price font-weight-bold heading-orange">&#8364
+                    {{ boat.price }}/day</h4>
+            </div>
+        </a>
+    </div>
+    <!--end div card-->
+    {% endfor %}
+</div><!-- end row -->
 </div><!-- end container -->
 
 {% endblock %}

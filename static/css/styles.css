@@ -279,11 +279,19 @@ a:visited {
   width: 10rem;
   height: 6rem;
 }
-
+.image-hist {
+  width: 12rem;
+  height:8rem;
+}
 .image-cart {
   width: 23rem;
   height: 14rem;
 }
+
+.table td.shopping-hist, th.shopping-hist{
+  border: 1px solid #dee2e6;
+}
+
 
 /* media responsive design */
 @media (min-width: 768px) {
@@ -297,6 +305,11 @@ a:visited {
 
   .img-details {
     height: 30rem;
+  }
+
+  .btn-search{
+    width: 7rem;
+    height: 4rem;
   }
 }
 @media (min-width: 992px) {
