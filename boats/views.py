@@ -20,19 +20,20 @@ def find_boats(request):
     request_search_name = request.GET.get("search_name")
     search_name = request_search_name if request_search_name is not None else ""
 
+    request_has_searched = request.GET.get("searched")
+    has_searched = request_has_searched not in [None, '']
+
     request_include_sailboat = request.GET.get("include_sailboat")
-    include_sailboat = bool(strtobool(request_include_sailboat)) if request_include_sailboat not in [None, ''] else True
-    print(include_sailboat)
-    print(request_include_sailboat)
+    include_sailboat = bool(strtobool(request_include_sailboat)) if request_include_sailboat not in [None, ''] else not has_searched
 
     request_include_powerboat = request.GET.get("include_powerboat")
-    include_powerboat = bool(strtobool(request_include_powerboat)) if request_include_powerboat is not None and not '' else True
+    include_powerboat = bool(strtobool(request_include_powerboat)) if request_include_powerboat not in [None, ''] else  not has_searched
 
     request_include_catamaran = request.GET.get("include_catamaran")
-    include_catamaran = bool(strtobool(request_include_catamaran)) if request_include_catamaran is not None and not '' else True
+    include_catamaran = bool(strtobool(request_include_catamaran)) if request_include_catamaran not in [None, ''] else not has_searched
 
     request_include_motoryacht = request.GET.get("include_motoryacht")
-    include_motoryacht = bool(strtobool(request_include_motoryacht)) if request_include_motoryacht is not None and not '' else True
+    include_motoryacht = bool(strtobool(request_include_motoryacht)) if request_include_motoryacht not in [None, ''] else not has_searched
 
     boats = Boats.objects.all()
     boats = boats.filter(cabins__gte=min_cabins)
