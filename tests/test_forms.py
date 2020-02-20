@@ -51,7 +51,7 @@ class TestMakePaymentForm(TestCase):
         form = forms.MakePaymentForm()
         choices = form.fields["expiry_year"].choices
 
-        for i in range(11): 
+        for i in range(10): 
             self.assertEqual(choices[i], (2020 + i, 2020 + i))
 
     def test_stripe_id_field_is_hidden(self):
