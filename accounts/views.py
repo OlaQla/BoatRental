@@ -5,17 +5,20 @@ from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm
 from checkout.models import OrderLineItem
 
+
 def index(request):
     """
-    Return the index.html 
+    Return the index.html
     """
     return render(request, 'index.html')
 
+
 def terms(request):
     """
-    Return the terms.html 
+    Return the terms.html
     """
     return render(request, 'terms.html')
+
 
 @login_required
 def logout(request):
@@ -25,6 +28,7 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "You have successfully been logged out")
     return redirect(reverse('index'))
+
 
 def login(request):
     """
@@ -43,10 +47,12 @@ def login(request):
                 messages.success(request, "You have successfully logged in!")
                 return redirect(reverse('index'))
             else:
-                login_form.add_error(None, "Your username or password is incorrect")
+                login_form.add_error(
+                    None, "Your username or password is incorrect")
     else:
         login_form = UserLoginForm()
     return render(request, 'login.html', {'login_form': login_form})
+
 
 def registration(request):
     """
@@ -61,24 +67,29 @@ def registration(request):
         if registration_form.is_valid():
             registration_form.save()
             user = auth.authenticate(username=request.POST['username'],
-                                    password=request.POST['password1'] )
+                                     password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully registered!")
                 return redirect(reverse('index'))
-            else: 
-                messages.error(request, "Unable to register your account at thi time")
+            else:
+                messages.error(
+                    request, "Unable to register your account at thi time")
 
     else:
         registration_form = UserRegistrationForm()
-        
-    return render(request, 'registration.html', {"registration_form": registration_form})
+
+    return render(
+        request, 'registration.html', {
+            "registration_form": registration_form})
+
 
 def user_profile(request):
     """
     User's profile page
     """
-    user = User.objects.get(email = request.user.email)
+    user = User.objects.get(email=request.user.email)
     user_orders = OrderLineItem.objects.filter(user_id=user.id)
-    return render(request, 'profile.html', {"profile": user, "orders": user_orders})
-
+    return render(
+        request, 'profile.html', {
+            "profile": user, "orders": user_orders})

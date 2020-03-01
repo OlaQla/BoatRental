@@ -12,13 +12,17 @@ def cart_contents(request):
     cart_items = []
     total = 0
     boat_count = 0
-    
+
     for id, data in cart.items():
-        for subid, subitem in enumerate(data): 
+        for subid, subitem in enumerate(data):
             quantity = subitem[2]
             boat = get_object_or_404(Boats, pk=id)
             total += quantity * boat.price
             boat_count += 1
-            cart_items.append({'id': id, 'subid': subid, 'quantity': quantity, 'value': quantity * boat.price, 'boat': boat})
-    
+            cart_items.append({'id': id,
+                               'subid': subid,
+                               'quantity': quantity,
+                               'value': quantity * boat.price,
+                               'boat': boat})
+
     return {'cart_items': cart_items, 'total': total, 'boat_count': boat_count}

@@ -52,8 +52,8 @@ INSTALLED_APPS = [
     'boats',
     'cart',
     'checkout'
-   
-    
+
+
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -71,7 +71,7 @@ ROOT_URLCONF = 'boat_rental.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-         'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,24 +93,24 @@ WSGI_APPLICATION = 'boat_rental.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
+    # 'default': {
     #    'ENGINE': 'django.db.backends.sqlite3',
     #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #}
+    # }
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  os.environ.get("POSTGRES_CLOUD_NAME"),
-        'USER':  os.environ.get("POSTGRES_CLOUD_USER"),
+        'NAME': os.environ.get("POSTGRES_CLOUD_NAME"),
+        'USER': os.environ.get("POSTGRES_CLOUD_USER"),
         'PASSWORD': os.environ.get("POSTGRES_CLOUD_PASSWORD"),
-        'HOST':  os.environ.get("POSTGRES_CLOUD_HOST"),
+        'HOST': os.environ.get("POSTGRES_CLOUD_HOST"),
         'PORT': '5432',
     }
 }
 
 if 'test' in sys.argv:
     DATABASES['default'] = {
-       'ENGINE': 'django.db.backends.sqlite3',
-       'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -157,12 +157,12 @@ STATICFILES_LOCATION = 'static'
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
-MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION) 
+MEDIA_URL = 'http://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
 
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"            
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
@@ -172,6 +172,8 @@ EMAIL_PORT = 587
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
-AUTHENTICATION_BACKENDS = ('accounts.backends.EmailAuth', "django.contrib.auth.backends.ModelBackend")
+AUTHENTICATION_BACKENDS = (
+    'accounts.backends.EmailAuth',
+    "django.contrib.auth.backends.ModelBackend")
 if 'test' not in sys.argv:
     django_heroku.settings(locals())

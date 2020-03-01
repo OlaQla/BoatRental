@@ -4,12 +4,21 @@ from django.urls import reverse
 from boats.models import Boats
 import unittest
 
-class BoatsViewsTest(TestCase): 
+
+class BoatsViewsTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Boats.objects.create(model = "abc", boatType = "small", price = 110, maxPassangers = 3, cabins = 2, lenght = 10, builtDate = "2010-01-01", image = "test_image.jpg")
+        Boats.objects.create(
+            model="abc",
+            boatType="small",
+            price=110,
+            maxPassangers=3,
+            cabins=2,
+            lenght=10,
+            builtDate="2010-01-01",
+            image="test_image.jpg")
 
-    def test_get_all_boats_at_desired_location(self): 
+    def test_get_all_boats_at_desired_location(self):
         response = self.client.get('/boats/')
         self.assertEqual(response.status_code, 200)
 
@@ -17,7 +26,7 @@ class BoatsViewsTest(TestCase):
         response = self.client.get(reverse('boats'))
         self.assertEqual(response.status_code, 200)
 
-    def test_get_all_boats_has_correct_template(self): 
+    def test_get_all_boats_has_correct_template(self):
         response = self.client.get(reverse('boats'))
         self.assertTemplateUsed(response, "boats.html")
 
@@ -36,5 +45,3 @@ class BoatsViewsTest(TestCase):
     def test_get_boat_details_has_correct_template(self):
         response = self.client.get(reverse('boat_details', args=(1,)))
         self.assertTemplateUsed(response, "boat_details.html")
-
-        
