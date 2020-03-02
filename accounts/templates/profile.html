@@ -13,22 +13,22 @@
                 <tr>
                     <th scope="col">Order date</th>
                     <th scope="col">Boat</th>
-                    <th scope="col">Rent date</th>
+                    <th scope="col">Rental dates</th>
                     <th scope="col">Payment</th>
                 </tr>
             </thead>
             <tbody>
                 {% for item in orders %}
                 <tr>
-                    <th class="bg-light shopping-hist" scope="row">111000000</th>
+                    <th class="bg-light shopping-hist" scope="row">{{item.order_date|date:"D d M Y"}}</th>
                     <td class="bg-light shopping-hist py-2">
                         <figure">
-                            <figcaption class="font-weight-bold mx-5 pb-2">{{ item.boat.model }}</figcaption>
-                            <img class="image-hist img-thumbnail" src="{{ MEDIA_URL }}{{ item.boat.image }}"
+                            <figcaption class="font-weight-bold mx-5 pb-2">{{ item.boat_model }}</figcaption>
+                            <img class="image-hist img-thumbnail" src="{{ MEDIA_URL }}{{ item.boat_image }}"
                                 alt="boat image">
                             </figure>
                     </td>
-                    <td class="font-weight-bold bg-light shopping-hist">{{ item.quantity }}</td>
+                    <td class="font-weight-bold bg-light shopping-hist">{{ item.from_date|date:"D d M Y" }} - {{ item.to_date|date:"D d M Y" }} ({{item.days}} days)</td>
                     <td class="font-weight-bold bg-light shopping-hist">
                         <p>&#8364 {{ item.subtotal }}</p>
                     </td>
