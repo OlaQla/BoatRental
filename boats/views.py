@@ -9,7 +9,7 @@ import json
 from datetime import date, datetime, timedelta
 from collections import namedtuple
 from distutils.util import strtobool
-
+from boats.forms import BoatSearchForm
 
 def find_boats(request):
     request_min_cabins = request.GET.get("min_cabins")
@@ -57,7 +57,7 @@ def find_boats(request):
              (include_catamaran is True and boat.boatType == "sailing catamaran") or
              (include_motoryacht is True and boat.boatType == "motor yacht")]
 
-    return render(request, "boats.html", {"boats": boats})
+    return render(request, "boats.html", {"boats": boats, "search_form": BoatSearchForm(initial=request.GET)})
 
 
 def boat_details(request, boat_id):

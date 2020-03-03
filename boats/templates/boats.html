@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 {% load static %}
 {% block page_title %}Search boat{% endblock %}
 
@@ -7,48 +8,48 @@
 <div class="container top-padding-container">
     <!-- search section -->
     <form class="pt-md-5">
+        {{ search_form.non_field_errors }}
         <div class="row d-flex justify-content-center mb-5">
             <div class="col-md-3 active-navy px-3 mb-3 mx-md-3">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="search_name">
+                {{ search_form.search_name|as_crispy_field}}
             </div>
             <div class="col-md-3 mx-md-3">
                 <div class="row px-3 mb-3 active-navy">
                     <div class="col-md-5 px-0">
                         <span class="font-weight-bold">Min Guests:</span>
                     </div>
-                    <div class="col-md-7 px-0"><input type="text" class="form-control" placeholder="Min Guests" name="min_passangers"></div>
+                    <div class="col-md-7 px-0">
+                        {{ search_form.min_passangers|as_crispy_field}}
+                    </div>
                 </div>
                 <div class="row px-3 mb-3 active-navy">
                     <div class="col-md-5 px-0">
                         <span class="font-weight-bold">Min Cabins:</span>
                     </div>
                     <div class="col-md-7 px-0">
-                        <input type="text" class="form-control" placeholder="Min Cabins" name="min_cabins">
+                        {{ search_form.min_cabins|as_crispy_field}}
                     </div>
                 </div>
             </div>
             <div class="col-md-3 form-check ml-3 mx-md-3">
                 <div class="row px-3 mb-3">
-                    <input class="form-check-input" type="checkbox" value="True" name="include_sailboat" Checked>
+                    {{ search_form.include_sailboat|as_crispy_field}}
                     <label class="form-check-label" for="defaultCheck1">
                         Sailboat
                     </label>
                 </div>
                 <div class="row px-3 mb-3">
-                    <input class="form-check-input" type="checkbox" value="True" name="include_powerboat" Checked>
-                    <label class="form-check-label" for="defaultCheck1">
+                    {{ search_form.include_powerboat|as_crispy_field}}<label class="form-check-label" for="defaultCheck1">
                         Powerboat
                     </label>
                 </div>
                 <div class="row px-3 mb-3">
-                    <input class="form-check-input" type="checkbox" value="True" name="include_catamaran" Checked>
-                    <label class="form-check-label" for="defaultCheck1">
+                    {{ search_form.include_catamaran|as_crispy_field}}<label class="form-check-label" for="defaultCheck1">
                         Catamaran
                     </label>
                 </div>
                 <div class="row px-3 mb-3">
-                    <input class="form-check-input" type="checkbox" value="True" name="include_motoryacht" Checked>
-                    <label class="form-check-label" for="defaultCheck1">
+                    {{ search_form.include_motoryacht|as_crispy_field}}<label class="form-check-label" for="defaultCheck1">
                         Motor Yacht
                     </label>
                 </div>

@@ -6,11 +6,6 @@ $(document).ready(function(){
     /** True if it's not the first search */
     const hasSearched = urlParams.get("searched");
 
-    /** Load querystring parameters into search form fields */
-    $('input[name="search_name"]').val(urlParams.get("search_name"));
-    $('input[name="min_passangers"]').val(urlParams.get("min_passangers"));
-    $('input[name="min_cabins"]').val(urlParams.get("min_cabins"));
-
     /** 
      * Checkboxes have default value True if no searches were performed
      * Otherwise they will use the value found in relevant field in query string
