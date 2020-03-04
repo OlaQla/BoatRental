@@ -5,7 +5,10 @@ const dateForField = (date) => {
     return calYear + "-" + (calMonth) + "-" + (calDay)
 }
 
-const aggregatedData = new Set();
+const bookedDates = new Set();
+let newStartDate = undefined;
+let newEndDate = undefined;
+let isFirst = true;
 
 const reloadCalendar = (boat_id, year, month) => {
     // Disable buttons while reloading
@@ -15,17 +18,22 @@ const reloadCalendar = (boat_id, year, month) => {
         .done(function (data) {
 
             // Enable buttons back after reload
-            $("button").prop('disabled', false);
+            $("button[type=button]").prop('disabled', false);
+            $("button[type=submit]").prop('disabled', !(!!newStartDate && !!newEndDate));
 
             data.filter(x => x.in_month && !x.available)
-                .forEach(v => aggregatedData.add((new Date(year, month, v.day)).getTime()));
+                .forEach(v => bookedDates.add((new Date(year, month, v.day)).getTime()));
 
+            $(".selected").removeClass("selected");
+            
             $("#calendar").find("td").each(function (index) {
                 $(this).text(data[index].day)
 
-                $(".selected").removeClass("selected");
-
                 if (data[index].in_month) {
+                    if(!!newStartDate && newStartDate.getTime() === (new Date(year, month, data[index].day)).getTime()) {
+                        $(this).addClass("selected");
+                    }
+
                     $(this).addClass("in_month");
                 } else {
                     $(this).removeClass("in_month");
@@ -43,9 +51,13 @@ const reloadCalendar = (boat_id, year, month) => {
     });
 }
 
-const clearSelection = () => {
+const resetState = () => {
     const $allSelected = $(".selected");
     $allSelected.removeClass("selected");
+    newStartDate = undefined;
+    newEndDate = undefined;
+    isFirst = true;
+    $("button[type=submit]").prop("disabled", true);
     $("#startDay").val('');
     $("#endDay").val('');
 }
@@ -53,22 +65,18 @@ const clearSelection = () => {
 $(document).ready(function () {
     date = new Date()
     boat_id = $(window.location.href.split("/")).last()[0];
-    reloadCalendar(boat_id, date.getFullYear(), date.getMonth())
-
-    let isFirst = true;
-    let newStartDate = new Date();
-    let newEndDate = new Date();
+    reloadCalendar(boat_id, date.getFullYear(), date.getMonth());
 
     $buttons = $("[type=button]");
 
     $buttons.eq(1).click(function(){
         date = new Date(date.getFullYear(), date.getMonth() - 1);
-        reloadCalendar(boat_id, date.getFullYear(), date.getMonth() + 1);
+        reloadCalendar(boat_id, date.getFullYear(), date.getMonth());
     });
 
     $buttons.eq(2).click(function(){
         date = new Date(date.getFullYear(), date.getMonth() + 1);
-        reloadCalendar(boat_id, date.getFullYear(), date.getMonth() + 1);
+        reloadCalendar(boat_id, date.getFullYear(), date.getMonth());
     });
 
     $(document).on('click', '.in_month.available', function () {
@@ -78,11 +86,13 @@ $(document).ready(function () {
         calYear = date.getFullYear()
 
         if (isFirst) {
-            newStartDate = new Date(calYear, calMonth, calDay)
-            $("#startDay").val(dateForField(newStartDate))
-            $('#endDay').val('')
-            $('.selected').removeClass('selected')
-            $(this).addClass('selected')
+            newStartDate = new Date(calYear, calMonth, calDay);
+            newEndDate = undefined;
+            $("#startDay").val(dateForField(newStartDate));
+            $('#endDay').val('');
+            $('.selected').removeClass('selected');
+            $(this).addClass('selected');
+            $("button[type=submit]").prop("disabled", true);
 
         } else {
             newEndDate = new Date(calYear, calMonth, calDay)
@@ -98,20 +108,22 @@ $(document).ready(function () {
             // Test if any day in between is already booked
             startMs = newStartDate.getTime();
             endMs = newEndDate.getTime();
-            if([...aggregatedData].find(d => d >= startMs && d <= endMs)) {
-                isFirst = true;
-                clearSelection();
+            if([...bookedDates].find(d => d >= startMs && d <= endMs)) {
+                resetState()
                 return;
             }
 
             $(this).addClass('selected')
             const $allAvailable = $(".available")
             const indices = $(".selected").toArray().map(x => $allAvailable.index(x));
-            $allAvailable.slice(indices[0], indices[1]).addClass("selected")
+            $allAvailable.slice(indices[0], indices[1]).addClass("selected");
 
             const $allSelected = $(".selected");
             if (parseInt($allSelected.eq(-1).text()) - parseInt($allSelected.eq(0).text()) + 1 !== $allSelected.length) {
-                clearSelection();
+                resetState();
+                return;
+            } else {
+                $("button[type=submit]").prop("disabled", false);
             }
         }
 
