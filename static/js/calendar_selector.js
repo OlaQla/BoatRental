@@ -7,9 +7,15 @@ const dateForField = (date) => {
 
 const aggregatedData = new Set();
 
-const reloadCalendar = (boat_id, year, month) => 
+const reloadCalendar = (boat_id, year, month) => {
+    // Disable buttons while reloading
+   $("button").prop('disabled', true);
+
     $.ajax({url: `/boats/availability/${boat_id}/${year}/${month}`})
         .done(function (data) {
+
+            // Enable buttons back after reload
+            $("button").prop('disabled', false);
 
             data.filter(x => x.in_month && !x.available)
                 .forEach(v => aggregatedData.add((new Date(year, month, v.day)).getTime()));
@@ -35,6 +41,7 @@ const reloadCalendar = (boat_id, year, month) =>
 
             })
     });
+}
 
 const clearSelection = () => {
     const $allSelected = $(".selected");
