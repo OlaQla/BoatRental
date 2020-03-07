@@ -9,13 +9,6 @@ from datetime import datetime
 
 OrderView = namedtuple('OrderView', ['order_date', 'days', 'boat_image', 'boat_model', 'from_date', 'to_date', 'subtotal'])
 
-def index(request):
-    """
-    Return the index.html
-    """
-    return render(request, 'index.html')
-
-
 def terms(request):
     """
     Return the terms.html

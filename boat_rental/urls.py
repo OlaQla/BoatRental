@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from accounts.views import index, terms
+from accounts.views import terms
+from homepage.views import index
 from accounts import urls as accounts_urls
 from boats import urls as urls_boats
 from boats.views import find_boats
