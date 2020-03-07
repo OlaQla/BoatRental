@@ -89,53 +89,26 @@
     <div class="row m-auto d-flex justify-content-center">
      
       <!-- card references -->
+      {% for review in reviews %}
       <div class="card mr-md-2" style="width: 18rem;">
-        <img src="{% static 'images/avatar1.png' %}" class="card-img-top img-avatar" alt="avatar">
+        <img src="{{ MEDIA_URL }}{{ review.image }}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
           <div class="row d-flex justify-content-center m-2">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-          </div>
-          <p class="card-text">The condition of the boat was exactly as advertised and met our expectation. Sailed close
-            to Howt with a great wind and current directly from the straight, so we had a good lift. Thank you for the
-            great experience and opportunity to charter with your company.</p>
-        </div>
-      </div>
-      <!-- card references -->
-      <div class="card mr-md-2" style="width: 18rem;">
-        <img src="{% static 'images/avatar2.png' %}" class="card-img-top img-avatar" alt="avatar">
-        <div class="card-body">
-          <div class="row d-flex justify-content-center m-2">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-          </div>
-          <p class="card-text">Excellent yacht. Would recommend. The yacht was like it was brand new and was spotlessly
-            clean, everything worked and was great to sail. Will hire again.</p>
-        </div>
-      </div>
 
-      <!-- card references -->
-      <div class="card" style="width: 18rem;">
-        <img src="{% static 'images/avatar3.png' %}" class="card-img-top img-avatar" alt="avatar">
-        <div class="card-body">
-          <div class="row d-flex justify-content-center m-2">
+            {% for _ in review.stars %}
             <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
+            {% endfor %}
+
+            {% for _ in review.stars_missing %}
+            <span class="fa fa-star"></span>
+            {% endfor %}
+
           </div>
-          <p class="card-text">Such a fun day on the harbour. The guys did everything as soon as we were onboard and we
-            could just relax. We had a BBQ on board and a beautiful swim at a private beach. Would definitely go again!
-          </p>
+          <p class="card-text">{{review.reviewText}}</p>
         </div>
-      </div> <!--end card-->
+      </div>
+     {% endfor %}
+      
     </div> <!-- end row -->
 </aside> <!-- end aside -->
 
