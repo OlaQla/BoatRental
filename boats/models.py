@@ -11,5 +11,8 @@ class Boats(models.Model):
     builtDate = models.DateField()
     image = models.ImageField(upload_to='images')
 
+    class Meta:
+        verbose_name_plural = "Boats"
+    
     def __str__(self):
         return self.model

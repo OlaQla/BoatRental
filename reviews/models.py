@@ -10,5 +10,8 @@ class Reviews(models.Model):
         ])
     image = models.ImageField(upload_to='images')
 
+    class Meta:
+        verbose_name_plural = "Reviews"
+
     def __str__(self):
         return self.reviewText
