@@ -16,3 +16,9 @@ class Boats(models.Model):
     
     def __str__(self):
         return self.model
+
+class FeaturedBoat(models.Model): 
+    boat = models.ForeignKey(Boats, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.boat.model
