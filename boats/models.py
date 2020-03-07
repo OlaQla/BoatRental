@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 class Boats(models.Model):
     model = models.CharField(max_length=254, default='')
     boatType = models.CharField(max_length=30, default='')

@@ -51,9 +51,8 @@ INSTALLED_APPS = [
     'accounts',
     'boats',
     'cart',
-    'checkout'
-
-
+    'checkout', 
+    'reviews'
 ]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
