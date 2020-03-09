@@ -70,7 +70,7 @@ def registration(request):
                 return redirect(reverse('index'))
             else:
                 messages.error(
-                    request, "Unable to register your account at thi time")
+                    request, "Unable to register your account at this time")
 
     else:
         registration_form = UserRegistrationForm()
