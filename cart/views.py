@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, reverse
+from boats.models import FeaturedBoat, Boats
 from datetime import datetime
 
 
 def view_cart(request):
     """Cart contents page"""
-    return render(request, "cart.html")
+    featuredBoats = map(lambda fb: fb.boat, FeaturedBoat.objects.all()[:3])
+    return render(request, "cart.html", {'featured_boats': featuredBoats})
 
 
 def add_to_cart(request, id):
