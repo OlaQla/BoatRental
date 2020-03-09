@@ -118,6 +118,13 @@ $(document).ready(function () {
         // Mark start date in calendar as selected, set start / end date variables
         if (isFirst) {
             newStartDate = new Date(calYear, calMonth, calDay);
+
+            // Do not allow for start date earlier than today
+            if(newStartDate < new Date()) {
+                resetState()
+                return;
+            } 
+
             newEndDate = undefined;
             $("#startDay").val(dateForField(newStartDate));
             $('#endDay').val('');
@@ -135,6 +142,13 @@ $(document).ready(function () {
                 [newStartDate, newEndDate] = [newEndDate, newStartDate]
                 $("#startDay").val(dateForField(newStartDate))
                 $("#endDay").val(dateForField(newEndDate))
+            }
+
+            // Do not allow for start date earlier than today, only start date need to be tested
+            // because if endDate was earlier they would swap above
+            if(newStartDate < new Date()) {
+                resetState()
+                return;
             }
 
             // Test if any day in between is already booked
