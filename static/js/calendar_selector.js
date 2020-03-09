@@ -56,9 +56,9 @@ const reloadCalendar = (boat_id, year, month) => {
                         }
                     }
 
-                    $(this).addClass("in_month");
+                    $(this).addClass("in_month").removeClass("not_in_month");
                 } else {
-                    $(this).removeClass("in_month");
+                    $(this).removeClass("in_month").addClass("not_in_month");
                 }
 
                 if (data[index].available) {
