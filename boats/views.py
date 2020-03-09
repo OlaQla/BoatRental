@@ -62,7 +62,6 @@ def find_boats(request):
 
 def boat_details(request, boat_id):
     boat = Boats.objects.get(id=boat_id)
-    print(boat)
     return render(request, "boat_details.html", {"boat": boat})
 
 
