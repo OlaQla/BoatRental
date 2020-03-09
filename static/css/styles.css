@@ -129,7 +129,7 @@ footer {
 }
 
 .checked {
-  color: orange;  /* rating stars color */
+  color: orange; /* rating stars color */
 }
 
 .img-avatar {
@@ -143,7 +143,7 @@ a:visited {
 
 /* boats - cards and detailed view styles */
 
-.active-navy input[type=text]:focus:not([readonly]) {
+.active-navy input[type="text"]:focus:not([readonly]) {
   border: 1px solid #272743;
   box-shadow: 0 0 0 1.3px #272743;
 }
@@ -170,18 +170,18 @@ a:visited {
 .img-responsive {
   width: 100%;
   height: 16rem;
-} 
+}
 
 .img-details {
   height: 18rem;
 }
 
-.details{
+.details {
   font-size: 1.3rem;
 }
 /* styling calendar */
 
-.table{
+.table {
   font-family: Maven Pro, Helvetica, Arial, sans-serif;
 }
 .month {
@@ -189,7 +189,7 @@ a:visited {
   color: #fafafa;
 }
 
-.table th.month{
+.table th.month {
   padding: 3rem 0;
 }
 .weekdays {
@@ -203,10 +203,13 @@ a:visited {
 .available {
   background-color: #6da06f !important;
 }
-.available.selected{
-  background-color:#79a7d3 !important;
+.available.selected {
+  background-color: #79a7d3 !important;
 }
-
+.not_in_month {
+  background-color: #6da06f !important;
+  opacity: 0.2;
+}
 
 /* Forms styles */
 
@@ -281,19 +284,22 @@ a:visited {
 }
 .image-hist {
   width: 12rem;
-  height:8rem;
+  height: 8rem;
 }
 .image-cart {
   width: 23rem;
   height: 14rem;
 }
 
-.table td.shopping-hist, th.shopping-hist{
+.table td.shopping-hist,
+th.shopping-hist {
   border: 1px solid #dee2e6;
 }
 
-
 /* media responsive design */
+@media (max-width: 767px) {
+
+}
 @media (min-width: 768px) {
   .form-bg {
     width: 50%;
@@ -307,7 +313,7 @@ a:visited {
     height: 30rem;
   }
 
-  .btn-search{
+  .btn-search {
     width: 7rem;
     height: 4rem;
   }
@@ -317,4 +323,3 @@ a:visited {
 
 @media (min-width: 1050px) {
 }
-
