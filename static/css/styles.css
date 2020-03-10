@@ -33,6 +33,9 @@ h6 {
   color: #eb5e1c;
 }
 
+.messages_alert{
+  padding-top:5rem;
+}
 /* navbar and footer styling */
 
 nav,
@@ -211,6 +214,20 @@ a:visited {
   opacity: 0.2;
 }
 
+/* boat comments */
+.comment_username{
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  color:#eb5e1c;
+}
+.comment_text{
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+.comment_date{
+  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+}
 /* Forms styles */
 
 .password-reset-info {
@@ -316,6 +333,10 @@ th.shopping-hist {
   .btn-search {
     width: 7rem;
     height: 4rem;
+  }
+  .comment_card{
+    width: 75%;
+    margin:auto;
   }
 }
 @media (min-width: 992px) {

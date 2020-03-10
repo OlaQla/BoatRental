@@ -10,6 +10,10 @@ from datetime import date, datetime, timedelta
 from collections import namedtuple
 from distutils.util import strtobool
 from boats.forms import BoatSearchForm
+from comments.models import Comment
+from collections import namedtuple
+
+CommentView = namedtuple('CommentView', ['commentText', 'date', 'username', 'stars', 'stars_missing'])
 
 def find_boats(request):
     request_min_cabins = request.GET.get("min_cabins")
@@ -62,8 +66,10 @@ def find_boats(request):
 
 def boat_details(request, boat_id):
     boat = Boats.objects.get(id=boat_id)
-    return render(request, "boat_details.html", {"boat": boat})
-
+    dbComments = Comment.objects.filter(boat__id=boat_id)
+    comments = map(lambda c: CommentView(commentText = c.commentText, date = c.date, username = c.user.username, stars = range(c.starRating), stars_missing = range(5 - c.starRating)), dbComments)
+   
+    return render(request, "boat_details.html", {"boat": boat, "comments": comments})
 
 def boat_availability(request, boat_id, year, month):
     daysTaken = {}
