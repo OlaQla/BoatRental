@@ -73,9 +73,9 @@ def boat_details(request, boat_id):
 
 def boat_availability(request, boat_id, year, month):
     daysTaken = {}
-    request_from_date = datetime(int(year), int(month), 1)
+    request_from_date = datetime(int(year), int(month) + 1, 1)
     request_to_date = datetime(
-        int(year), int(month), calendar.monthrange(
+        int(year), int(month) + 1, calendar.monthrange(
             int(year), int(month))[1])
     orderDates = OrderLineItem.objects.filter(
         boat_id=boat_id).exclude(
@@ -85,8 +85,9 @@ def boat_availability(request, boat_id, year, month):
     for order in orderDates:
         startDate = date.fromtimestamp(order.from_date)
         endDate = date.fromtimestamp(order.to_date)
+       
         while startDate <= endDate:
-            if startDate.month == int(month):
+            if startDate.month == int(month) + 1:
                 daysTaken[startDate.day] = True
             startDate += timedelta(days=1)
 
