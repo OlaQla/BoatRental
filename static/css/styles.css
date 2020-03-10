@@ -144,9 +144,18 @@ a:visited {
   text-decoration: none;
 }
 
+a.link-card-boat{
+  color: #ff8652;
+}
+
 /* boats - cards and detailed view styles */
 
 .active-navy input[type="text"]:focus:not([readonly]) {
+  border: 1px solid #272743;
+  box-shadow: 0 0 0 1.3px #272743;
+}
+
+.active-navy input[type="number"]:focus:not([readonly]) {
   border: 1px solid #272743;
   box-shadow: 0 0 0 1.3px #272743;
 }

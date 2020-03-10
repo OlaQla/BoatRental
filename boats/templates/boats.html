@@ -14,19 +14,19 @@
                 {{ search_form.search_name|as_crispy_field}}
             </div>
             <div class="col-md-3 mx-md-3">
-                <div class="row px-3 mb-3 active-navy">
+                <div class="row px-3 mb-3">
                     <div class="col-md-5 px-0">
                         <span class="font-weight-bold">Min Guests:</span>
                     </div>
-                    <div class="col-md-7 px-0">
+                    <div class="col-md-7 px-0 active-navy">
                         {{ search_form.min_passangers|as_crispy_field}}
                     </div>
                 </div>
-                <div class="row px-3 mb-3 active-navy">
+                <div class="row px-3 mb-3">
                     <div class="col-md-5 px-0">
                         <span class="font-weight-bold">Min Cabins:</span>
                     </div>
-                    <div class="col-md-7 px-0">
+                    <div class="col-md-7 px-0 active-navy">
                         {{ search_form.min_cabins|as_crispy_field}}
                     </div>
                 </div>
@@ -64,7 +64,7 @@
     <!-- boat cards with link to card details-->
     {% for boat in boats %}
     <div class="card card-item shadow mr-md-2 mb-4" style="width: 23rem;">
-        <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
+        <a href="{% url 'boat_details' boat_id=boat.id%}">
             <img class="img-responsive image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
             <div class="card-body text-center">
                 <h4 class="card-title text-uppercase heading-orange">{{ boat.model }}</h4>
