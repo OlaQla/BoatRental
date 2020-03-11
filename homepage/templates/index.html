@@ -56,7 +56,7 @@
   <div class="row m-auto d-flex justify-content-center">
     {% for boat in featured_boats %}
     <!--featured boat cord-->
-    <div class="card shadow card-item mr-md-2" style="width: 21rem;">
+    <div class="card shadow card-item mr-md-2 mb-3" style="width: 21rem;">
       <a href="{% url 'boat_details' boat_id=boat.id%}" class="link-card-boat">
         <img src="{{ MEDIA_URL }}{{ boat.image }}" class="card-img-top img-responsive" alt="featured boat">
         <div class="card-body">
@@ -80,7 +80,7 @@
 
       <!-- card references -->
       {% for review in reviews %}
-      <div class="card mr-md-2" style="width: 20rem;">
+      <div class="card mr-md-2 mb-3" style="width: 21rem;">
         <img src="{{ MEDIA_URL }}{{ review.image }}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
           <div class="row d-flex justify-content-center m-2">
