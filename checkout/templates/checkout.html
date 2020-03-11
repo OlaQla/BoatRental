@@ -14,7 +14,7 @@
 
 {% block content %}
 
-<div class="container top-padding-container px-0">
+<div class="container top-padding-container px-0 m-auto">
     <div class="row">
         <div class="col-md-4 py-md-5">
             <div class="card">
@@ -75,11 +75,11 @@
                                 <input class=" btn btn-orange" id="submit_payment_btn" name="commit" type="submit"
                                     value="Submit Payment">
                             </div>
+                            <div class="alert alert-danger" id="credit-card-errors" style="display: none;">
+                                <p class="text-center p-2" id="stripe-error-message"></p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="credit-card-errors" style="display: none;">
-                    <div id="alert-message block-message error" id="stripe-error-message"></div>
                 </div>
             </form>
         </div>

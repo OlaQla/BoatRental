@@ -70,12 +70,12 @@
         </nav> <!-- end navbar-->
 
         <h1>
-            {% block page_heading %}{% endblock %}
+            {% block page_heading %}Boat rental{% endblock %}
         </h1>
 
 
         {% if messages %}
-        <div class="alert alert-warning m-0 messages_alert">
+        <div class="alert alert-warning m-0 pt-5 messages_alert">
             {% for message in messages %}
             {{ message }}
             {% endfor %}

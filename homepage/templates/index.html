@@ -7,15 +7,18 @@
 {% block content %}
 <div class="jumbotron jubotron-image">
   <div class="container">
-    <h3 class="display-4 jumbotron-text">Your adventure starts here!</h3>
-    <p class="lead jumbotron-text">Hire luxury boat in best price!</p>
+    <div class="jumbothron-text-background py-5 text-center">
+      <h3 class="display-4 jumbotron-text">Your adventure starts here!</h3>
+
+      <p class="lead jumbotron-text">Hire luxury boat in best price!</p>
+    </div>
   </div>
 </div>
 <!--div end jumbotron -->
 
 <!-- search, book, enjoy section-->
 <section>
-  <div class="row m-auto d-flex justify-content-center p-5">
+  <div class="row m-auto d-flex justify-content-center pt-5 pb-5">
     <div class="col-md-3">
       <div class="row d-flex justify-content-center"><i class="icon-home-page fas fa-search"></i></div>
       <div class="row d-flex justify-content-center">
@@ -52,7 +55,7 @@
 
 <!--  featured boats section-->
 <article>
-  <h2 class="text-center py-4 mb-2">FEATURED BOATS</h2>
+  <h2 class="text-center py-5 mb-2">FEATURED BOATS</h2>
   <div class="row m-auto d-flex justify-content-center">
     {% for boat in featured_boats %}
     <!--featured boat cord-->
@@ -80,7 +83,7 @@
 
       <!-- card references -->
       {% for review in reviews %}
-      <div class="card mr-md-2 mb-3" style="width: 21rem;">
+      <div class="card mr-md-2 mb-3" style="width: 20rem;">
         <img src="{{ MEDIA_URL }}{{ review.image }}" class="card-img-top img-avatar" alt="avatar">
         <div class="card-body">
           <div class="row d-flex justify-content-center m-2">

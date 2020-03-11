@@ -63,7 +63,7 @@
 <div class="row d-flex justify-content-center">
     <!-- boat cards with link to card details-->
     {% for boat in boats %}
-    <div class="card card-item shadow mr-md-2 mb-4" style="width: 23rem;">
+    <div class="card card-item shadow mr-md-2 mb-4">
         <a href="{% url 'boat_details' boat_id=boat.id%}">
             <img class="img-responsive image-fluid" src="{{ MEDIA_URL }}{{ boat.image }}" alt="boat image">
             <div class="card-body text-center">
