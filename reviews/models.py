@@ -1,6 +1,8 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+""" Model representing user reviews of the renting experience """
+
 
 class Reviews(models.Model):
     reviewText = models.CharField(max_length=254, default='')
@@ -11,6 +13,7 @@ class Reviews(models.Model):
                                      ])
     image = models.ImageField(upload_to='images')
 
+    # Avoid adding second s in admin panel
     class Meta:
         verbose_name_plural = "Reviews"
 

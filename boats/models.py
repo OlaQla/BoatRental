@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+""" Model representing a boat for rent """
+
 
 class Boats(models.Model):
     model = models.CharField(max_length=254, default='')
@@ -12,11 +14,15 @@ class Boats(models.Model):
     builtDate = models.DateField()
     image = models.ImageField(upload_to='images')
 
+    # This is to avoid adding second s at the end in admin panel
     class Meta:
         verbose_name_plural = "Boats"
 
     def __str__(self):
         return self.model
+
+
+""" An item in a list of featured boats for promotion, it is just a reference to one of the boats """
 
 
 class FeaturedBoat(models.Model):

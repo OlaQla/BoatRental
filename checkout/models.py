@@ -2,6 +2,9 @@ from django.db import models
 from boats.models import Boats
 from django.contrib.auth.models import User
 
+""" Model representing a single order details, which can be references by
+    multiple OrderLineItems """
+
 
 class Order(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
@@ -18,6 +21,10 @@ class Order(models.Model):
 
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
+
+
+""" Model representing a single boat order within an order 'session' than
+    can contain one or many accumulated orders """
 
 
 class OrderLineItem(models.Model):

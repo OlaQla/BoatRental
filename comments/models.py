@@ -3,6 +3,9 @@ from boats.models import Boats
 from django.contrib.auth.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+""" Model representing a User comment about rented boat, references both
+    user and boat models """
+
 
 class Comment(models.Model):
     commentText = models.CharField(max_length=254, default='')
