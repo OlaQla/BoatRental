@@ -7,7 +7,15 @@ from checkout.models import OrderLineItem
 from collections import namedtuple
 from datetime import datetime
 
-OrderView = namedtuple('OrderView', ['order_date', 'days', 'boat_image', 'boat_model', 'from_date', 'to_date', 'subtotal'])
+OrderView = namedtuple('OrderView',
+                       ['order_date',
+                        'days',
+                        'boat_image',
+                        'boat_model',
+                        'from_date',
+                        'to_date',
+                        'subtotal'])
+
 
 def terms(request):
     """
@@ -85,8 +93,20 @@ def user_profile(request):
     User's profile page
     """
     user = User.objects.get(email=request.user.email)
-    dbOrders = OrderLineItem.objects.filter(user_id=user.id).order_by('-from_date')
-    user_orders = map(lambda o: OrderView(order_date = o.order.date, days = o.quantity, boat_image = o.boat.image, subtotal = o.subtotal, boat_model = o.boat.model, from_date = datetime.fromtimestamp(o.from_date), to_date = datetime.fromtimestamp(o.to_date)), dbOrders)
+    dbOrders = OrderLineItem.objects.filter(
+        user_id=user.id).order_by('-from_date')
+    user_orders = map(
+        lambda o: OrderView(
+            order_date=o.order.date,
+            days=o.quantity,
+            boat_image=o.boat.image,
+            subtotal=o.subtotal,
+            boat_model=o.boat.model,
+            from_date=datetime.fromtimestamp(
+                o.from_date),
+            to_date=datetime.fromtimestamp(
+                o.to_date)),
+        dbOrders)
     return render(
         request, 'profile.html', {
             "profile": user, "orders": user_orders})

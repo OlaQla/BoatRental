@@ -51,8 +51,8 @@ INSTALLED_APPS = [
     'accounts',
     'boats',
     'cart',
-    'checkout', 
-    'reviews', 
+    'checkout',
+    'reviews',
     'homepage',
     'comments'
 ]

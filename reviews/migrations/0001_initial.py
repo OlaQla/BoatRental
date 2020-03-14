@@ -17,10 +17,25 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Reviews',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('reviewText', models.CharField(default='', max_length=254)),
-                ('starRating', models.IntegerField(default=5, validators=[django.core.validators.MaxValueValidator(5), django.core.validators.MinValueValidator(1)])),
-                ('image', models.ImageField(upload_to='images')),
+                ('id',
+                 models.AutoField(
+                     auto_created=True,
+                     primary_key=True,
+                     serialize=False,
+                     verbose_name='ID')),
+                ('reviewText',
+                 models.CharField(
+                     default='',
+                     max_length=254)),
+                ('starRating',
+                 models.IntegerField(
+                     default=5,
+                     validators=[
+                         django.core.validators.MaxValueValidator(5),
+                         django.core.validators.MinValueValidator(1)])),
+                ('image',
+                 models.ImageField(
+                     upload_to='images')),
             ],
         ),
     ]

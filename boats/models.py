@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 
+
 class Boats(models.Model):
     model = models.CharField(max_length=254, default='')
     boatType = models.CharField(max_length=30, default='')
@@ -13,11 +14,12 @@ class Boats(models.Model):
 
     class Meta:
         verbose_name_plural = "Boats"
-    
+
     def __str__(self):
         return self.model
 
-class FeaturedBoat(models.Model): 
+
+class FeaturedBoat(models.Model):
     boat = models.ForeignKey(Boats, on_delete=models.CASCADE)
 
     def __str__(self):

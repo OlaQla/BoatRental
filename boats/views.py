@@ -13,7 +13,10 @@ from boats.forms import BoatSearchForm
 from comments.models import Comment
 from collections import namedtuple
 
-CommentView = namedtuple('CommentView', ['commentText', 'date', 'username', 'stars', 'stars_missing'])
+CommentView = namedtuple(
+    'CommentView', [
+        'commentText', 'date', 'username', 'stars', 'stars_missing'])
+
 
 def find_boats(request):
     request_min_cabins = request.GET.get("min_cabins")
@@ -61,15 +64,30 @@ def find_boats(request):
              (include_catamaran is True and boat.boatType == "sailing catamaran") or
              (include_motoryacht is True and boat.boatType == "motor yacht")]
 
-    return render(request, "boats.html", {"boats": boats, "search_form": BoatSearchForm(initial=request.GET)})
+    return render(
+        request, "boats.html", {
+            "boats": boats, "search_form": BoatSearchForm(
+                initial=request.GET)})
 
 
 def boat_details(request, boat_id):
     boat = Boats.objects.get(id=boat_id)
     dbComments = Comment.objects.filter(boat__id=boat_id)
-    comments = map(lambda c: CommentView(commentText = c.commentText, date = c.date, username = c.user.username, stars = range(c.starRating), stars_missing = range(5 - c.starRating)), dbComments)
-   
-    return render(request, "boat_details.html", {"boat": boat, "comments": comments})
+    comments = map(
+        lambda c: CommentView(
+            commentText=c.commentText,
+            date=c.date,
+            username=c.user.username,
+            stars=range(
+                c.starRating),
+            stars_missing=range(
+                5 - c.starRating)),
+        dbComments)
+
+    return render(
+        request, "boat_details.html", {
+            "boat": boat, "comments": comments})
+
 
 def boat_availability(request, boat_id, year, month):
     daysTaken = {}
@@ -85,7 +103,7 @@ def boat_availability(request, boat_id, year, month):
     for order in orderDates:
         startDate = date.fromtimestamp(order.from_date)
         endDate = date.fromtimestamp(order.to_date)
-       
+
         while startDate <= endDate:
             if startDate.month == int(month) + 1:
                 daysTaken[startDate.day] = True
