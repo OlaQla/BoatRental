@@ -1,6 +1,8 @@
 from django import forms
 
-
+"""
+    Form for searching boats
+"""
 class BoatSearchForm(forms.Form):
     search_name = forms.CharField(
         label="",
