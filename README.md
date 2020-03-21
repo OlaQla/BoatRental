@@ -49,7 +49,7 @@ CLI scripting language available on Microsoft Windows operating system by defaul
 
 **Stripe**
 
-Payments provider and library.
+Payments provider and javascript library.
 
 # Tools used
 - Balsamiq mockups
@@ -87,13 +87,29 @@ In visual studio code with Python extension (by Microsoft) installed press Ctrl 
 - ls . -filter *.py -recurse | % { autopep8 --in-place --aggressive --aggressive $_.fullname }
 
 # Deployment and hosting
-- Code repository (https://github.com/OlaQla/BoatRental)
-- CI/CD with Travis (https://travis-ci.org/OlaQla/BoatRental)
-- Static content on S3 (custom_storages.py)
-- Hosting on Heroku
 
+Application code is stored in a public github repository specially created for the project (https://github.com/OlaQla/BoatRental). Thanks to using git (distributed version control system) and github (git hosting platform owned by Microsoft) it is easy to share the code, track changes in application logic and assets and if needed to revert unwanted changes. 
+
+For the purpose of validating code on all code check-ins before it gets deployed and potentially something gets broken, In Travis CI there is a dedicated project configured (https://travis-ci.org/OlaQla/BoatRental) to run the tests and either allow or block the deployment. 
+In code repository i have created a file .travis.yml that contains configuration instructing Travis how to build the project and instructs it to run included tests.
+
+Production version of application (http://boat-rental.herokuapp.com/) is hosted on a free tier of Heroku platform. In Heroku i have created dedicated project and connected it to code stored in github repository in CD (continuous delivery) fashion, what makes the most recent version of code to be deployed automatically after it's pushed to code repository and passes validation in Travis. 
+In Heroku application is utilizing a Heroku managed PostgreSQL database which was the easiest way of attaching production database to hosted application. 
+For the purpose of correctly building application for hosting in Heroku container i have installed python package django-heroku (v.0.3.1).
+In settings.py i had to import django_heroku package and at the end of the file i have added an invocation of a django_heroku.settings function to correctly set application options for hosting.
+
+Media files are stored in AWS S3 bucket. It is due to Heroku dynos storage not being persistent what would make uploaded media files to go away if application was to be scheduled in a different dyno which is in Heroku nomenclature type of a virtual machine. Heroku applications could be scheduled in different dynos after each deployment, when old application instance is removed and a new one is created. Free tier dynos are also not guaranteed to be active all the time and can be recycled and application scheduled on a different node when someone tries to access it. 
+AWS S3 has a free tier that provided me with enough capacity to host the files i needed. 
+In order to host media files in a folder in S3 bucket in a transparent way for the application i have created and custom storage for media files in custom_storages.py and plugged it in settings.py as a media file storage class.
+
+Static files are hosted in the same S3 bucket as media files. The reason for hosting static files in S3 bucket are that it provides potentially better bandwidth and quicker response times due to being architected in a way to serve files efficiently, rather than running applications. 
+To avoid clashing in the same bucket with media files, i have created a custom storage for static files (inheriting from S3Boto3Storage class) and configured it in settings.py. 
+I found few issues when trying to push static files to the bucket. First issue was that when running manage.py collectstatic command i expected files to be uploaded to S3 storage, instead files were collected locally only and nothing was uploaded. I googled for potential solutions until i found a suggestion on stackoverflow (https://stackoverflow.com/questions/49742714/collecstatic-does-not-push-to-files-s3) that it might be related to open issue in django_heroku package (https://github.com/heroku/django-heroku/issues/25). After passing parameter `staticfiles=False` to django_herku.settings call the collectstatic started working as expected. 
+Once files were uploaded i found the second issue that static files were not served correctly from S3 bucket, images were missing, there was not styling on a page and layout was broken due to browser nto being able to validate https certificate correctly. The issue appeared to be the name of the bucket, which contained `.` and broser was unable to identify which part of url is the domain name. Solution to this problem was to create a new bucket with dash, instead of dot in the name. 
+After thatchange i could see in developer tools network tab that all the assets are loaded from S3 bucket correctly and they are being updated before every deployment of the application. 
+ 
 # Limitations, further development
 
 # Credits
-
+  
 ** Purpose of this project is educational **
