@@ -63,14 +63,30 @@ Payments provider and javascript library.
 - Stripe
 
 # Authentication and authorization
-- Default Django mechanism
-- Overriden default templates
+
+Application is using authentication and authorization mechanisms in order to identify users and provide relevant contents accoring to their identity and access levels. There are application pages that can be browsed without having an account and having to log in, like homepage or boat catalog. Then there are pages that require user to be logged in to see the content related to their account like for example profile page or checkout. There is also and admin page that requires user to have administrative priviledges. 
+Most of the authentication and authorization is done by enabling and customizing existing Django mechanisms ("accounts.backends.EmailAuth", "django.contrib.auth.backends.ModelBackend"). 
+Sending emails is using another Django mechanism ("django.core.mail.backends.smtp.EmailBackend") and is configured to utilize gmail smtp gateway. 
+In addition to configuring existing mechanisms in templates/registration folder i have created customized templates that override default django templates and provide look and feel of password related emails consistent with the rest of the application. 
 
 # Django application structure
-- Accounts
-- Boats
-- Cart
-- Checkout
+
+'django.contrib.admin',
+'django.contrib.auth',
+'django.contrib.contenttypes',
+'django.contrib.sessions',
+'django.contrib.messages',
+'django.contrib.staticfiles',
+'django_forms_bootstrap',
+'crispy_forms',
+'storages',
+'accounts',
+'boats',
+'cart',
+'checkout',
+'reviews',
+'homepage',
+'comments'
 
 # API
 - Description of all API endpoints
