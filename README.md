@@ -119,6 +119,7 @@ Application code is stored in a public github repository specially created for t
 
 For the purpose of validating code on all code check-ins before it gets deployed and potentially something gets broken, In Travis CI there is a dedicated project configured (https://travis-ci.org/OlaQla/BoatRental) to run the tests and either allow or block the deployment. 
 In code repository i have created a file .travis.yml that contains configuration instructing Travis how to build the project and instructs it to run included tests.
+Travis also provides a successful / failing build badge that helps visually indicate if code stored in repository is in healthy state. 
 
 Production version of application (http://boat-rental.herokuapp.com/) is hosted on a free tier of Heroku platform. In Heroku i have created dedicated project and connected it to code stored in github repository in CD (continuous delivery) fashion, what makes the most recent version of code to be deployed automatically after it's pushed to code repository and passes validation in Travis. 
 In Heroku application is utilizing a Heroku managed PostgreSQL database which was the easiest way of attaching production database to hosted application. 
