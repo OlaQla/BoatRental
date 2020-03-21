@@ -71,22 +71,33 @@ In addition to configuring existing mechanisms in templates/registration folder 
 
 # Django application structure
 
-'django.contrib.admin',
-'django.contrib.auth',
-'django.contrib.contenttypes',
-'django.contrib.sessions',
-'django.contrib.messages',
-'django.contrib.staticfiles',
-'django_forms_bootstrap',
-'crispy_forms',
-'storages',
-'accounts',
-'boats',
-'cart',
-'checkout',
-'reviews',
-'homepage',
-'comments'
+Django application consists of multiple reusable components that are in Django nomenclature also called applications. Django is pluggable, extensible and provides multiple applications out of the box. To implement mu project I used following default Django applications: 
+
+- django.contrib.admin
+- django.contrib.auth
+- django.contrib.contenttypes
+- django.contrib.sessions
+- django.contrib.messages
+- django.contrib.staticfiles
+
+I have added some applications not delivered with default Django installation. For the purpose of working with bootstrap and especially forms presented with bootstrap styles i used: 
+
+- django_forms_bootstrap
+- crispy_forms
+
+And in order to configure and use S3 bucket i used application: 
+- storages
+
+I have also created some applications for handling different parts of the solution, which are described below: 
+
+|Application name | Purpose |
+|homepage|The main page of application|
+|accounts|Handling user account registration, profile and log-in / log-out|
+|boats|Boat catalog, boats data and availability for calendar view|
+|reviews|Site reviews listing and loading|
+|comments|User comments on provided boats|
+|cart|Handling user cart management|
+|checkout|Selected products checkout, stripe integration for card processing|
 
 # API
 - Description of all API endpoints
