@@ -18,6 +18,8 @@ Each customer can view history of their transactions.
 
 ## Demo
 
+![](static/images/AmIResponsive_BoatRental.png)
+
 # Programming language and libraries
 
 For the purpose of creating boat rental service following programming languaes and libraries were used: 
@@ -139,5 +141,7 @@ After thatchange i could see in developer tools network tab that all the assets 
 # Limitations, further development
 
 # Credits
+
+favicon:"https://icons8.com/icon/9317/sail-boat" Sail Boat icon by Icons8
   
 ** Purpose of this project is educational **
