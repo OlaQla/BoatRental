@@ -11,7 +11,7 @@
         <table class="table table-responsive-xs table-responsive-sm">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Order date</th>
+                    <th scope="col">Order date </th>
                     <th scope="col">Boat</th>
                     <th scope="col">Rental dates</th>
                     <th scope="col">Payment</th>
@@ -20,7 +20,8 @@
             <tbody>
                 {% for item in orders %}
                 <tr>
-                    <th class="bg-light shopping-hist" scope="row">{{item.order_date|date:"D d M Y"}}</th>
+                    <th class="bg-light shopping-hist" scope="row">{{item.order_date|date:"D d M Y"}}
+                    </th>
                     <td class="bg-light shopping-hist py-2">
                         <figure">
                             <figcaption class="font-weight-bold mx-5 pb-2">{{ item.boat_model }}</figcaption>
@@ -36,8 +37,7 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
-    <!--end row-->
-</div>
-<!--end container-->
+    </div><!--end row-->
+</div><!--end container-->
+
 {% endblock %}
