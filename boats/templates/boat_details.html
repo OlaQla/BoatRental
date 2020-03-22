@@ -10,14 +10,14 @@
 
 <div class="m-auto px-3 pb-5 top-padding-container">
     <div class="row">
-        <div class="col-md-6 mb-3">
+        <div class="col-lg-6 mb-3">
             <!--headings Model and Price -->
             <hgroup>
                 <h1 class="text-uppercase text-center">{{ boat.model }}</h1>
                 <h2 class="text-center">&#8364 {{ boat.price }}/day</h2>
             </hgroup>
         </div>
-        <div class="col-md-6 mb-3">
+        <div class="col-lg-6 mb-3">
             <!-- boat details-->
             <h3 class="text-center text-uppercase">Details:</h3>
             <div class="row py-3 d-flex justify-content-center details">
@@ -28,15 +28,18 @@
                 <span class="pr-3"><span class="font-weight-bold">Built date: </span>{{boat.builtDate}}</span>
             </div>
         </div>
-    </div>
-    <!--end row model and details-->
+    </div><!--end row model and details-->
+    
     <div class="row">
-        <div class="col-md-6">
-            <!--boat image-->
+        <!----boat image---->
+        <div class="col-lg-6 mb-2">
+            
             <img class="card-img-top img-thumbnail image-fluid img-details" src="{{ MEDIA_URL }}{{ boat.image }}"
                 alt="boat image">
         </div>
-        <div class="col-md-6">
+
+        <!----calendar ----->
+        <div class="col-lg-6">
             <table class="table table-responsive-sm mb-5">
                 <thead>
                     <tr>
@@ -121,7 +124,7 @@
     </div>  <!--end row image and calendar-->
   
     <section>
-        <h3 class="text-uppercase text-center mt-5">Comments:</h3>
+        <h3 class="text-uppercase heading-orange text-center mt-5">Comments:</h3>
         {% for comment in comments %}
         <div class="card comment_card mb-2">
             <div class="card-header">
