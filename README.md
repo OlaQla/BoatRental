@@ -67,7 +67,8 @@ Following tools, were used during development of the project:
   
 - `pycodestyle` (formerly called pep8) is a Python style guide checker, which i installed as a PyPI PyPI package tp validate code conformance to pep8 standard. 
   
-- `autopep8` is another PyPI package that I used, it automatically formats Python code to conform to the PEP 8 style guide. It uses the pycodestyle utility to determine what parts of the code needs to be formatted. autopep8 is capable of fixing most of the formatting issues that can be reported by pycodestyle. I used level 2 aggressive formatting which gave easy to read pep8 conformat formatted code (autopep8 --in-place --aggressive --aggressive <filename>). In order to make it easy to use i further automated running autopep8 with powershell script iterating through all the files in project and automatically formatting all unformatted files.
+- `autopep8` is another PyPI package that I used, it automatically formats Python code to conform to the PEP 8 style guide. It uses the pycodestyle utility to determine what parts of the code needs to be formatted. autopep8 is capable of fixing most of the formatting issues that can be reported by pycodestyle. I used level 2 aggressive formatting which gave easy to read pep8 conformat formatted code (autopep8 --in-place --aggressive --aggressive <filename>). In order to make it easy to use i further automated running autopep8 with powershell script iterating through all the files in project and automatically formatting all unformatted files. The script is presented below:
+ls . -filter *.py -recurse | % { autopep8 --in-place --aggressive --aggressive $_.fullname }
   
 - `PostgreSQL windows client` I have installed as part of Windows PostgreSQL database installation. I used the database client to inspect the data being written to database during project development and leatning about Django data models. It also came very handy while testing the application to either create or clear test data from the database. 
 
@@ -121,9 +122,7 @@ I have also created some applications for handling different parts of the soluti
 
 # Linting
 
-In visual studio code with Python extension (by Microsoft) installed press Ctrl + Shift + P to open task context menu ...
-
-- ls . -filter *.py -recurse | % { autopep8 --in-place --aggressive --aggressive $_.fullname }
+Linting is the process of running a program that will analyse code for potential errors. It can be automated through tools and scripts. For some programming languages (including Python) tools fixing potential issues found by linter exist and are available to developers for free. Few tools used during development were described in `tools` section before. In Visual Studio code linting can be either run manually from terminal by invoking linter with parameters or it can be invoked from `run menu` accessible by pressing keys combination CTRL + SHIFT + P and then selecting option `Python: Run Linting`. Linting can also be enabled to be running constantly on each file being saved using option from the same `run menu` but with option `Python: Enable Linting`. 
 
 # Deployment and hosting
 
