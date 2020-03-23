@@ -116,9 +116,13 @@ I have also created some applications for handling different parts of the soluti
 - Description of all API endpoints
   
 # Testing 
-- 3 test types
-- test coverage 
-- coverage manage.py test, coverage report, coverage html, ./htmlcov/index.html
+
+Most fo the testing was done manually to test part of application flows from user perspective. By the end of development a full test cycle was done that included account registration, log-in / out, browsing pages on multiple browsers (Microsoft Edge, Google Chrome, Mozilla Firefox, iPad, iPhone, Samsung Galaxy) and looking for visual issues when changing devices and scale of the screens. Test cycle included browsing the catalog, adding / removing from cart, and finally the successful and unsuccessful checkout process. 
+
+In addition to manual testing I have included few automated tests of three types available in Django. 
+Those types are `Form tests` `Model tests` and `Views tests`. Forms test validate if form fields are configured properly and properly initialized. Thanks to these tests an issue where not all months in dropdown were populated was found. Model focus on how models are defined and how their fields are configured, it also tests basic CRUD operations on model instances. The last, view tests are testing business logic that gets data from requests in the backend, loads relevant data, processes it and sends data for rendering in the templates. 
+
+In order to get a sense of how much testing was really done and how much is still left test coverage tools are being used. During the development process i used `Coverage.py` which i installed with PIP. It is and easy to use tool that quickly gives eye catching and easy to read reports with all the statistics included. In order to measure, collect, and report on code coverage i executed command `coverage manage.py test` which ran and created coverage data that then could be browsed in a terminal with command `coverage report`. Coverage.py can also export report in html form with command `coverage html` which creates `htmlcov` folder and puts html files file supporting javascripts and css for improving visual styles. The report can be browsed with default web browser by just opening file `./htmlcov/index.html`.
 
 # Linting
 
