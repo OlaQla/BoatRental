@@ -51,15 +51,25 @@ CLI scripting language available on Microsoft Windows operating system by defaul
 
 **Stripe**
 
-Payments provider and javascript library.
+Payments provider and javascript library providing easy to use payment API, that abstract and hides underlying API calls to Stripe backend services.
 
 # Tools used
-- Balsamiq mockups
-- Visual Studio Code with Python plugin (by Microsoft)
-- pylint (added path C:\Users\aleks\AppData\Roaming\Python\Python37\Scripts)
-- pycodestyle
-- autopep8 ($ autopep8 --in-place --aggressive --aggressive <filename>)
-- Postgresql windows client
+
+Following tools, were used during development of the project: 
+
+- `Balsamiq mockups` were used in the initial project stage for creating mockups of the application. It helped in the initial planning of the site functionality as well as to create initial layout of the site and required templates for the MVP of the project.
+ 
+- `Visual Studio Code` is a text editor used in the development process. I chose this editor because of its lightweight nature, ease of installation and small installation size, good support for frontend technologies like javascript and css (which were used to create editor itself) and also its extensibility through plugins with high quality plugin for Python created by Microsoft itself.
+  
+- `Python plugin for Visual Studio Code (by Microsoft)` was used for writing python (.py) files in the project. Plugin is easy to install through extension mechanism that downloads and installs plugin with just a single click. Python plugin provides useful facilities like syntax coloring, IntelliSense, linting, debugging, code navigation, code formatting, Jupyter notebook support, refactoring, variable explorer, test explorer, code snippets and more. 
+
+- `pylint` is a standalone Python linter that i used to scan code and detect potential coding or formatting issues. In order to use the tool after installation i have added a folder to PATH environment variable ({USER_FOLDER}\AppData\Roaming\Python\Python37\Scripts). By adding the new entry to the PATH variable i made the tool available by just typing `pylint` in the terminal window.
+  
+- `pycodestyle` (formerly called pep8) is a Python style guide checker, which i installed as a PyPI PyPI package tp validate code conformance to pep8 standard. 
+  
+- `autopep8` is another PyPI package that I used, it automatically formats Python code to conform to the PEP 8 style guide. It uses the pycodestyle utility to determine what parts of the code needs to be formatted. autopep8 is capable of fixing most of the formatting issues that can be reported by pycodestyle. I used level 2 aggressive formatting which gave easy to read pep8 conformat formatted code (autopep8 --in-place --aggressive --aggressive <filename>). In order to make it easy to use i further automated running autopep8 with powershell script iterating through all the files in project and automatically formatting all unformatted files.
+  
+- `PostgreSQL windows client` I have installed as part of Windows PostgreSQL database installation. I used the database client to inspect the data being written to database during project development and leatning about Django data models. It also came very handy while testing the application to either create or clear test data from the database. 
 
 # Payments
 - Stripe
