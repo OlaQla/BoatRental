@@ -173,6 +173,11 @@ After thatchange i could see in developer tools network tab that all the assets 
  
 # Limitations, further development
 
+The purpose of project is educational and the functionality was planned in form of an MVP, what means a version of a project that if the smallest usable subset of the whole idea that the developer would be able to implement in designated timeframe. MVP for the boat rental project was to cover user registration, authentication and authorization, administrator panel, product catalog, cart and checkout and payments integration. All those components would allow users to go through the basic flow from account creation to successful renting of a selected boat and charging user credit card. 
+In addition to that I have implemented site reviews and comments that are at the moment populated from admin panel only. Comments and reviews are loaded and visible to users but right now the site does not provide users ways to create new reviews and comments. This functionality is implemented in limited form because of time constraints, also the planned requirement was to allow for creating comments for a boat but user who is confirmed to have rented a boat and after the rental time have passed. The complexity of the feature and testing it made me make decision to provide it in MVP in limited version only. 
+Another potential extension to the site would be to provide boats geographical location and searching boats by their locations. This feature was dropped in current release. 
+Last and probably most complex to implement feature would be acquiring lock to a boat for a limited time while viewing it's availability of after putting it to basket to avoid concurrency issues if more than one person is trying to book the same boat at the same time or if a malicious user tries doing it using multiple browser windows or devices. The feature was decided to be too complex for the first release taking into account educational purpose of the project.
+
 # Credits
 
 favicon:"https://icons8.com/icon/9317/sail-boat" Sail Boat icon by Icons8
