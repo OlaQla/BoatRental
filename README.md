@@ -113,8 +113,28 @@ I have also created some applications for handling different parts of the soluti
 |checkout|Selected products checkout, stripe integration for card processing|
 
 # API
-- Description of all API endpoints
-  
+|Pattern|View|Name|Application|Description|
+|-------|----|----|-----------|-----------|
+|/|index|index|boat_rental|Loads the welcome view of the site|
+|/admin|-|-|boat_rental|Loads the authenticated Django admin panel|
+|/media/(?P<path>.*)$|-|-|boat_rental|Loads requested file from media folder stored in S3|
+|/checkout|checkout|checkout|checkout|Preents the checkout view|
+|/boats|find_boats|boats|boats|Loads and filters boats for the catalog|
+|/boats/(?P<boat_id>[0-9]+)|boat_details|boat_details|boats|Loads and presents details of selected boat|
+|/boatsa/vailability/(?P<boat_id>[0-9]+)/(?P<year>[0-9]+)/(?P<month>[0-9]+)|boat_availability|boat_availability|boats|Loads the boat availability for selected month, it is the only endpoint serving just JSON data, not a view|
+|/cart|view_cart|view_cart|cart|Presents user cart view|
+|/cart/add/(?P<id>\d+)|add_to_cart|add_to_cart|cart|Adds item to cart|
+|/cart/remove/(?P<id>\d+)/(?P<subid>\d+)|remove_from_cart|remove_from_cart|cart|Removes item from cart|
+|/cart/adjust/(?P<id>\d+)|adjust_cart|adjust_cart|cart|Adjusts / changes quantity in user cart|
+|/accounts/logout|logout|logout|accounts|Logs user out and redirects to index page|
+|/accounts/login|login|login|accounts|Presents user with login form|
+|/accounts/register|registration|registration|accounts|Presents non-authenticated user with registration form|
+|/accounts/profile|user_profile|profile|accounts|Presents authenticated user with his profile page containing all purchases to date|
+|/accounts/password-reset|password_reset|password_reset|accounts|Initiates password reset procedure|
+|/accounts/password-reset/done|password_reset_done|password_reset_done|accounts|Presents information that password resent was successful|
+|/accounts/password-reset/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/|password_reset_confirm|password_reset_confirm|accounts|If token matches one saved to a databse during password reset procedure initiation, it resets the password|
+|/accounts/password-reset/complete|password_reset_complete|password_reset_complete|accounts|Presents screen confirming that password reset email was sent|
+
 # Testing 
 
 Most fo the testing was done manually to test part of application flows from user perspective. By the end of development a full test cycle was done that included account registration, log-in / out, browsing pages on multiple browsers (Microsoft Edge, Google Chrome, Mozilla Firefox, iPad, iPhone, Samsung Galaxy) and looking for visual issues when changing devices and scale of the screens. Test cycle included browsing the catalog, adding / removing from cart, and finally the successful and unsuccessful checkout process. 
