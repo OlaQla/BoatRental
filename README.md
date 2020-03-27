@@ -180,6 +180,11 @@ Last and probably most complex to implement feature would be acquiring lock to a
 
 # Credits
 
+images: 
+https://unsplash.com/, 
+https://pixabay.com/, 
+https://www.pexels.com/
+
 favicon:"https://icons8.com/icon/9317/sail-boat" Sail Boat icon by Icons8
   
 ** Purpose of this project is educational **
