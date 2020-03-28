@@ -153,11 +153,8 @@ def boat_availability(request, boat_id, year, month):
     # Build a list of days making up full weeks for the month
     cal = calendar.Calendar()
     dayarray = []
-    for day in cal.itermonthdates(int(year), int(month)):
+    for day in cal.itermonthdates(int(year), int(month) + 1):
         dayarray.append(day)
-    
-    
-
     # Check availability with built daysTaken list, then convert availabilities to json response 
     return HttpResponse(
         json.dumps(
@@ -166,7 +163,7 @@ def boat_availability(request, boat_id, year, month):
                     lambda d: (
                         Availability(
                             day=d.day,
-                            in_month=d.month == int(month),
+                            in_month=d.month == int(month) + 1,
                             available=d.day not in daysTaken,
                             before_today=datetime(int(year), d.month, d.day).date() < datetime.now().date()))._asdict(),
                     dayarray))),
