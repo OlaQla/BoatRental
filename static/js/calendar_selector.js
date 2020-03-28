@@ -67,6 +67,12 @@ const reloadCalendar = (boat_id, year, month) => {
                     $(this).removeClass("available");
                 }
 
+                if(data[index].before_today) {
+                    $(this).addClass("before_today");
+                } else {
+                    $(this).removeClass("before_today");
+                }
+
                 $(".month").text(new Date(year, month).toLocaleString('default', { month: 'long' }));
 
             })

@@ -18,6 +18,9 @@ CommentView = namedtuple(
     'CommentView', [
         'commentText', 'date', 'username', 'stars', 'stars_missing'])
 
+# View of boat availability for a day
+Availability = namedtuple('Availability', ['day', 'in_month', 'available', 'before_today'])
+
 # Search view, gets parameters from request queries, filters boats and returns filtered boat list view
 def find_boats(request):
 
@@ -128,7 +131,7 @@ def boat_availability(request, boat_id, year, month):
     request_from_date = datetime(int(year), int(month) + 1, 1)
     request_to_date = datetime(
         int(year), int(month) + 1, calendar.monthrange(
-            int(year), int(month))[1])
+            int(year), int(month) + 1)[1])
 
     # Load all selected boat order lines between selected dates
     orderDates = OrderLineItem.objects.filter(
@@ -152,7 +155,8 @@ def boat_availability(request, boat_id, year, month):
     dayarray = []
     for day in cal.itermonthdates(int(year), int(month)):
         dayarray.append(day)
-    Availability = namedtuple('Availability', 'day in_month available')
+    
+    
 
     # Check availability with built daysTaken list, then convert availabilities to json response 
     return HttpResponse(
@@ -163,6 +167,7 @@ def boat_availability(request, boat_id, year, month):
                         Availability(
                             day=d.day,
                             in_month=d.month == int(month),
-                            available=d.day not in daysTaken))._asdict(),
+                            available=d.day not in daysTaken,
+                            before_today=datetime(int(year), d.month, d.day).date() < datetime.now().date()))._asdict(),
                     dayarray))),
         content_type='application/json')
