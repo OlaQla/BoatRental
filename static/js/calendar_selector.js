@@ -24,6 +24,9 @@ const reloadCalendar = (boat_id, year, month) => {
     // Disable buttons while reloading
    $("button").prop('disabled', true);
 
+   $("#calendar-table").hide();
+   $("#spinner").show();
+
     $.ajax({url: `/boats/availability/${boat_id}/${year}/${month}`})
         .done(function (data) {
 
@@ -31,6 +34,8 @@ const reloadCalendar = (boat_id, year, month) => {
             $("button[type=button]").prop('disabled', false);
             $("button[type=submit]").prop('disabled', !(!!newStartDate && !!newEndDate));
 
+            $("#calendar-table").show();
+            $("#spinner").hide();
             // Aggregate already booked dates in a set, so we will have all data 
             // that we pulled down for state validation purposes
             data.filter(x => x.in_month && !x.available)
@@ -92,6 +97,8 @@ const resetState = () => {
 }
 
 $(document).ready(function () {
+
+
     // This is calendar movable date to pick year / month
     date = new Date()
 

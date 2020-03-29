@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
-
 {% load crispy_forms_tags %}
 {% load static %}
 {% block page_title %}Search boat{% endblock %}
 
 {% block content %}
-<div class="container top-padding-container">
+<div class="container pt-5">
     <!-- search section -->
     <form class="pt-md-5">
         {{ search_form.non_field_errors }}

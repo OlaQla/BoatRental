@@ -135,6 +135,7 @@ footer {
   background-color: #fafafa;
 }
 
+
 .checked {
   color: orange; /* rating stars color */
 }
@@ -223,10 +224,18 @@ a.link-card-boat{
 .available.selected {
   background-color: #79a7d3 !important;
 }
-.not_in_month {
+ 
+.before_today {
   background-color: #6da06f !important;
   opacity: 0.2;
 }
+
+.not_in_month {
+  border: none !important;
+  background-color: #ffffff !important;
+  opacity: 0;
+}
+
 
 /* boat comments */
 .comment_username{
