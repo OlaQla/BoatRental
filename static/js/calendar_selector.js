@@ -160,9 +160,12 @@ $(document).ready(function () {
                 $("#endDay").val(dateForField(newEndDate))
             }
 
+            let today = new Date();
+            today.setHours(0, 0, 0, 0);
+
             // Do not allow for start date earlier than today, only start date need to be tested
             // because if endDate was earlier they would swap above
-            if(newStartDate < new Date()) {
+            if(newStartDate < today) {
                 resetState()
                 return;
             }
