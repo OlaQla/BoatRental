@@ -132,8 +132,11 @@ $(document).ready(function () {
         if (isFirst) {
             newStartDate = new Date(calYear, calMonth, calDay);
 
+            let today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
             // Do not allow for start date earlier than today
-            if(newStartDate < new Date()) {
+            if(newStartDate < today) {
                 resetState()
                 return;
             } 
