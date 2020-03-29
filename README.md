@@ -76,7 +76,7 @@ Following tools, were used during development of the project:
 Application is using authentication and authorization mechanisms in order to identify users and provide relevant contents accoring to their identity and access levels. There are application pages that can be browsed without having an account and having to log in, like homepage or boat catalog. Then there are pages that require user to be logged in to see the content related to their account like for example profile page or checkout. There is also and admin page that requires user to have administrative priviledges. 
 Most of the authentication and authorization is done by enabling and customizing existing Django mechanisms (`accounts.backends.EmailAuth`, `django.contrib.auth.backends.ModelBackend`).   
 Sending emails is using another Django mechanism (`django.core.mail.backends.smtp.EmailBackend`) and is configured to utilize gmail smtp gateway. 
-In addition to configuring existing mechanisms in templates/registration folder i have created customized templates that override default django templates and provide look and feel of password related emails consistent with the rest of the application. 
+In addition to configuring existing mechanisms in templates/registration folder I have created customized templates that override default django templates and provide look and feel of password related emails consistent with the rest of the application. 
 
 # Django application structure
 
@@ -100,6 +100,7 @@ And in order to configure and use S3 bucket i used application:
 I have also created some applications for handling different parts of the solution, which are described below: 
 
 |Application name | Purpose |
+|-----------------|---------|
 |homepage|The main page of application|
 |accounts|Handling user account registration, profile and log-in / log-out|
 |boats|Boat catalog, boats data and availability for calendar view|
@@ -109,6 +110,10 @@ I have also created some applications for handling different parts of the soluti
 |checkout|Selected products checkout, stripe integration for card processing|
 
 # API
+
+API (Application Programming Interface) is in web applications a set of HTTP endpoints that allow for interaction between applications or application frontend / backend components. 
+These are the application endpoints and their role in the project: 
+
 |Pattern|View|Name|Application|Description|
 |-------|----|----|-----------|-----------|
 |/|index|index|boat_rental|Loads the welcome view of the site|
@@ -117,7 +122,7 @@ I have also created some applications for handling different parts of the soluti
 |/checkout|checkout|checkout|checkout|Preents the checkout view|
 |/boats|find_boats|boats|boats|Loads and filters boats for the catalog|
 |/boats/(?P<boat_id>[0-9]+)|boat_details|boat_details|boats|Loads and presents details of selected boat|
-|/boatsa/vailability/(?P<boat_id>[0-9]+)/(?P<year>[0-9]+)/(?P<month>[0-9]+)|boat_availability|boat_availability|boats|Loads the boat availability for selected month, it is the only endpoint serving just JSON data, not a view|
+|/boats/vailability/(?P<boat_id>[0-9]+)/(?P<year>[0-9]+)/(?P<month>[0-9]+)|boat_availability|boat_availability|boats|Loads the boat availability for selected month, it is the only endpoint serving just JSON data, not a view|
 |/cart|view_cart|view_cart|cart|Presents user cart view|
 |/cart/add/(?P<id>\d+)|add_to_cart|add_to_cart|cart|Adds item to cart|
 |/cart/remove/(?P<id>\d+)/(?P<subid>\d+)|remove_from_cart|remove_from_cart|cart|Removes item from cart|
@@ -136,9 +141,9 @@ I have also created some applications for handling different parts of the soluti
 Most fo the testing was done manually to test part of application flows from user perspective. By the end of development a full test cycle was done that included account registration, log-in / out, browsing pages on multiple browsers (Microsoft Edge, Google Chrome, Mozilla Firefox, iPad, iPhone, Samsung Galaxy) and looking for visual issues when changing devices and scale of the screens. Test cycle included browsing the catalog, adding / removing from cart, and finally the successful and unsuccessful checkout process. 
 
 In addition to manual testing I have included few automated tests of three types available in Django. 
-Those types are `Form tests` `Model tests` and `Views tests`. Forms test validate if form fields are configured properly and properly initialized. Thanks to these tests an issue where not all months in dropdown were populated was found. Model focus on how models are defined and how their fields are configured, it also tests basic CRUD operations on model instances. The last, view tests are testing business logic that gets data from requests in the backend, loads relevant data, processes it and sends data for rendering in the templates. 
+Those types are `form tests`, `model tests` and `views tests`. Forms test validate if form fields are configured properly and properly initialized. Thanks to these tests an issue where not all months in dropdown were populated was found. Model focus on how models are defined and how their fields are configured, it also tests basic CRUD operations on model instances. The last, view tests are testing business logic that gets data from requests in the backend, loads relevant data, processes it and sends data for rendering in the templates. 
 
-In order to get a sense of how much testing was really done and how much is still left test coverage tools are being used. During the development process i used `Coverage.py` which i installed with PIP. It is and easy to use tool that quickly gives eye catching and easy to read reports with all the statistics included. In order to measure, collect, and report on code coverage i executed command `coverage manage.py test` which ran and created coverage data that then could be browsed in a terminal with command `coverage report`. Coverage.py can also export report in html form with command `coverage html` which creates `htmlcov` folder and puts html files file supporting javascripts and css for improving visual styles. The report can be browsed with default web browser by just opening file `./htmlcov/index.html`.
+In order to get a sense of how much testing was really done and how much is still left test coverage tools are being used. During the development process I used `Coverage.py`, which I installed with PIP. It is and easy to use tool that quickly gives eye catching and easy to read reports with all the statistics included. In order to measure, collect, and report on code coverage i executed command `coverage manage.py test` which ran and created coverage data that then could be browsed in a terminal with command `coverage report`. `Coverage.py` can also export report in html form with command `coverage html` which creates `htmlcov` folder and puts html files file supporting javascripts and css for improving visual styles. The report can be browsed with default web browser by just opening file `./htmlcov/index.html`.
 
 # Linting
 
@@ -152,9 +157,9 @@ For the purpose of validating code on all code check-ins before it gets deployed
 In code repository i have created a file .travis.yml that contains configuration instructing Travis how to build the project and instructs it to run included tests.
 Travis also provides a successful / failing build badge that helps visually indicate if code stored in repository is in healthy state. 
 
-Production version of application (http://boat-rental.herokuapp.com/) is hosted on a free tier of Heroku platform. In Heroku i have created dedicated project and connected it to code stored in github repository in CD (continuous delivery) fashion, what makes the most recent version of code to be deployed automatically after it's pushed to code repository and passes validation in Travis. 
+Production version of application (http://boat-rental.herokuapp.com/) is hosted on a free tier of Heroku platform. In Heroku I have created dedicated project and connected it to code stored in github repository in CD (continuous delivery) fashion, what makes the most recent version of code to be deployed automatically after it's pushed to code repository and passes validation in Travis. 
 In Heroku application is utilizing a Heroku managed PostgreSQL database which was the easiest way of attaching production database to hosted application. 
-For the purpose of correctly building application for hosting in Heroku container i have installed python package django-heroku (v.0.3.1).
+For the purpose of correctly building application for hosting in Heroku container I have installed python package django-heroku (v.0.3.1).
 In settings.py i had to import django_heroku package and at the end of the file i have added an invocation of a django_heroku.settings function to correctly set application options for hosting.
 
 Media files are stored in AWS S3 bucket. It is due to Heroku dynos storage not being persistent what would make uploaded media files to go away if application was to be scheduled in a different dyno which is in Heroku nomenclature type of a virtual machine. Heroku applications could be scheduled in different dynos after each deployment, when old application instance is removed and a new one is created. Free tier dynos are also not guaranteed to be active all the time and can be recycled and application scheduled on a different node when someone tries to access it. 
@@ -164,15 +169,17 @@ In order to host media files in a folder in S3 bucket in a transparent way for t
 Static files are hosted in the same S3 bucket as media files. The reason for hosting static files in S3 bucket are that it provides potentially better bandwidth and quicker response times due to being architected in a way to serve files efficiently, rather than running applications. 
 To avoid clashing in the same bucket with media files, i have created a custom storage for static files (inheriting from S3Boto3Storage class) and configured it in settings.py. 
 I found few issues when trying to push static files to the bucket. First issue was that when running manage.py collectstatic command i expected files to be uploaded to S3 storage, instead files were collected locally only and nothing was uploaded. I googled for potential solutions until i found a suggestion on stackoverflow (https://stackoverflow.com/questions/49742714/collecstatic-does-not-push-to-files-s3) that it might be related to open issue in django_heroku package (https://github.com/heroku/django-heroku/issues/25). After passing parameter `staticfiles=False` to django_herku.settings call the collectstatic started working as expected. 
-Once files were uploaded i found the second issue that static files were not served correctly from S3 bucket, images were missing, there was not styling on a page and layout was broken due to browser nto being able to validate https certificate correctly. The issue appeared to be the name of the bucket, which contained `.` and broser was unable to identify which part of url is the domain name. Solution to this problem was to create a new bucket with dash, instead of dot in the name. 
-After thatchange i could see in developer tools network tab that all the assets are loaded from S3 bucket correctly and they are being updated before every deployment of the application. 
+Once files were uploaded i found the second issue that static files were not served correctly from S3 bucket, images were missing, there was not styling on a page and layout was broken due to browser nto being able to validate https certificate correctly. The issue appeared to be the name of the bucket, which contained `.` (dot) and broser was unable to identify which part of url is the domain name. Solution to this problem was to create a new bucket with dash, instead of dot in the name. 
+After that change I could see in developer tools network tab that all the assets are loaded from S3 bucket correctly and they are being updated before every deployment of the application. 
  
 # Limitations, further development
 
-The purpose of project is educational and the functionality was planned in form of an MVP, what means a version of a project that if the smallest usable subset of the whole idea that the developer would be able to implement in designated timeframe. MVP for the boat rental project was to cover user registration, authentication and authorization, administrator panel, product catalog, cart and checkout and payments integration. All those components would allow users to go through the basic flow from account creation to successful renting of a selected boat and charging user credit card. 
-In addition to that I have implemented site reviews and comments that are at the moment populated from admin panel only. Comments and reviews are loaded and visible to users but right now the site does not provide users ways to create new reviews and comments. This functionality is implemented in limited form because of time constraints, also the planned requirement was to allow for creating comments for a boat but user who is confirmed to have rented a boat and after the rental time have passed. The complexity of the feature and testing it made me make decision to provide it in MVP in limited version only. 
-Another potential extension to the site would be to provide boats geographical location and searching boats by their locations. This feature was dropped in current release. 
-Last and probably most complex to implement feature would be acquiring lock to a boat for a limited time while viewing it's availability of after putting it to basket to avoid concurrency issues if more than one person is trying to book the same boat at the same time or if a malicious user tries doing it using multiple browser windows or devices. The feature was decided to be too complex for the first release taking into account educational purpose of the project.
+The purpose of project is educational and the functionality was planned in form of an MVP, what means a version of a project that if the smallest usable subset of the whole idea that the developer would be able to implement in designated timeframe. MVP for the boat rental project was to cover user registration, authentication and authorization, administrator panel, product catalog, cart and checkout and payments integration.  
+All those components would allow users to go through the basic flow from account creation to successful renting of a selected boat and charging user credit card. 
+In addition to that I have implemented site reviews and comments that are at the moment populated from admin panel only.  
+Comments and reviews are loaded and visible to users but right now the site does not provide users ways to create new reviews and comments. This functionality is implemented in limited form because of time constraints, also planned requirement was to allow for creating comments for a boat by users who are confirmed to have rented a boat and after the rental time have passed. The complexity of the feature and testing it made me make decision to provide it in MVP in limited version only.  
+Another potential extension to the site would be to provide boats geographical location and searching boats by their locations. This feature was dropped in current release.  
+Last and probably most complex to implement feature would be acquiring lock to a boat for a limited time while viewing it's availability or after putting it to basket to avoid concurrency issues if more than one person is trying to book the same boat at the same time or if a malicious user tries doing it using multiple browser windows or devices. The feature was decided to be too complex for the first release taking into account educational purpose of the project.
 
 # Credits
 
