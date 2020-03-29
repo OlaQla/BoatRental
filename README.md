@@ -7,7 +7,7 @@ Code Institute, Full Stack Frameworks with Django 2019/2020
 
 # Introduction
 
-"Boat rental" service is a Django application created for educational purpose that will be hosted online. As an educational exercise the goal is to implement full stack application using Python and Django framework, with well styled interactive frontend featuring data storage, search capabilities, account management, autohization and authentication, checkout and transaction history. 
+"Boat rental" service is a Django application created for educational purposes that is hosted online at https://boat-rental.herokuapp.com/. As an educational exercise the goal is to implement full stack application using Python and Django framework, with well styled interactive frontend featuring data storage, search capabilities, account management, authorization and authentication, checkout and transaction history. 
 
 ## Project purpose
 
@@ -38,7 +38,7 @@ Scripting language running in web browsers. It was used in projects for implemen
 Integration with Stripe payments is done through stripe javascript client.
 
 **jQuery**
-Javascript library simplifying interaction with html elements, executing ajax queries and providing utility functions. jQuery is also required by some interactive bootstrap components. In the project jQuery was used to implement part of the search component. 
+Javascript library simplifying interaction with html elements, executing ajax queries and providing utility functions. jQuery is also required by some interactive bootstrap components. In the project jQuery was used to implement search and calendae components. 
 
 **CSS**
 Web styling language used to apply styles to html document. All css is stored in a single, shared file style.css stored in static files css folder. 
@@ -50,36 +50,32 @@ Library providing responsive, styled web components. Used on most of the templat
 CLI scripting language available on Microsoft Windows operating system by default. In the project it was used for minor scripting tasks like automating running linter and autopep against multiple .py files
 
 **Stripe**
-
 Payments provider and javascript library providing easy to use payment API, that abstract and hides underlying API calls to Stripe backend services.
 
 # Tools used
 
 Following tools, were used during development of the project: 
 
-- `Balsamiq mockups` were used in the initial project stage for creating mockups of the application. It helped in the initial planning of the site functionality as well as to create initial layout of the site and required templates for the MVP of the project.
+  **Balsamiq mockups** were used in the initial project stage for creating mockups of the application. It helped in the initial planning of the site functionality as well as to create initial layout of the site and required templates for the MVP of the project.
  
-- `Visual Studio Code` is a text editor used in the development process. I chose this editor because of its lightweight nature, ease of installation and small installation size, good support for frontend technologies like javascript and css (which were used to create editor itself) and also its extensibility through plugins with high quality plugin for Python created by Microsoft itself.
+**Visual Studio Code** is a text editor used in the development process. I chose this editor because of its lightweight nature, ease of installation and small installation size, good support for frontend technologies like javascript and css (which were used to create editor itself) and also its extensibility through plugins with high quality plugin for Python created by Microsoft itself.
   
-- `Python plugin for Visual Studio Code (by Microsoft)` was used for writing python (.py) files in the project. Plugin is easy to install through extension mechanism that downloads and installs plugin with just a single click. Python plugin provides useful facilities like syntax coloring, IntelliSense, linting, debugging, code navigation, code formatting, Jupyter notebook support, refactoring, variable explorer, test explorer, code snippets and more. 
+**Python plugin for Visual Studio Code (by Microsoft)** was used for writing python (.py) files in the project. Plugin is easy to install through extension mechanism that downloads and installs plugin with just a single click. Python plugin provides useful facilities like syntax coloring, IntelliSense, linting, debugging, code navigation, code formatting, Jupyter notebook support, refactoring, variable explorer, test explorer, code snippets and more. 
 
-- `pylint` is a standalone Python linter that i used to scan code and detect potential coding or formatting issues. In order to use the tool after installation i have added a folder to PATH environment variable ({USER_FOLDER}\AppData\Roaming\Python\Python37\Scripts). By adding the new entry to the PATH variable i made the tool available by just typing `pylint` in the terminal window.
+**pylint** is a standalone Python linter that i used to scan code and detect potential coding or formatting issues. In order to use the tool after installation i have added a folder to PATH environment variable ({USER_FOLDER}\AppData\Roaming\Python\Python37\Scripts). By adding the new entry to the PATH variable i made the tool available by just typing `pylint` in the terminal window.
   
-- `pycodestyle` (formerly called pep8) is a Python style guide checker, which i installed as a PyPI PyPI package tp validate code conformance to pep8 standard. 
+**pycodestyle** (formerly called pep8) is a Python style guide checker, which is installed as a PyPI package to validate code conformance to pep8 standard. 
   
-- `autopep8` is another PyPI package that I used, it automatically formats Python code to conform to the PEP 8 style guide. It uses the pycodestyle utility to determine what parts of the code needs to be formatted. autopep8 is capable of fixing most of the formatting issues that can be reported by pycodestyle. I used level 2 aggressive formatting which gave easy to read pep8 conformat formatted code (autopep8 --in-place --aggressive --aggressive <filename>). In order to make it easy to use i further automated running autopep8 with powershell script iterating through all the files in project and automatically formatting all unformatted files. The script is presented below:
-ls . -filter *.py -recurse | % { autopep8 --in-place --aggressive --aggressive $_.fullname }
+  **autopep8** is another PyPI package that I used, it automatically formats Python code to conform to the PEP 8 style guide. It uses the pycodestyle utility to determine what parts of the code needs to be formatted. autopep8 is capable of fixing most of the formatting issues that can be reported by pycodestyle. I used level 2 aggressive formatting which gave easy to read pep8 conformat formatted code (`autopep8 --in-place --aggressive --aggressive <filename>`). In order to make it easy to use I further automated running autopep8 with powershell script iterating through all the files in project and automatically formatting all unformatted files. The script is presented below:  
+`ls . -filter *.py -recurse | % { autopep8 --in-place --aggressive --aggressive $_.fullname }`
   
-- `PostgreSQL windows client` I have installed as part of Windows PostgreSQL database installation. I used the database client to inspect the data being written to database during project development and leatning about Django data models. It also came very handy while testing the application to either create or clear test data from the database. 
-
-# Payments
-- Stripe
+  **PostgreSQL windows client** I have installed as part of Windows PostgreSQL database installation. I used the database client to inspect the data being written to database during project development and leatning about Django data models. It also came very handy while testing the application to either create or clear test data from the database. 
 
 # Authentication and authorization
 
 Application is using authentication and authorization mechanisms in order to identify users and provide relevant contents accoring to their identity and access levels. There are application pages that can be browsed without having an account and having to log in, like homepage or boat catalog. Then there are pages that require user to be logged in to see the content related to their account like for example profile page or checkout. There is also and admin page that requires user to have administrative priviledges. 
-Most of the authentication and authorization is done by enabling and customizing existing Django mechanisms ("accounts.backends.EmailAuth", "django.contrib.auth.backends.ModelBackend"). 
-Sending emails is using another Django mechanism ("django.core.mail.backends.smtp.EmailBackend") and is configured to utilize gmail smtp gateway. 
+Most of the authentication and authorization is done by enabling and customizing existing Django mechanisms (`accounts.backends.EmailAuth`, `django.contrib.auth.backends.ModelBackend`).   
+Sending emails is using another Django mechanism (`django.core.mail.backends.smtp.EmailBackend`) and is configured to utilize gmail smtp gateway. 
 In addition to configuring existing mechanisms in templates/registration folder i have created customized templates that override default django templates and provide look and feel of password related emails consistent with the rest of the application. 
 
 # Django application structure
