@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    // info when cart is empty
     var items = $('.item-in-cart');
     if (items.length > 0) {
         $('.not-empty-cart').show();

@@ -22,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
 }
 
 .top-padding-container {
@@ -36,37 +36,29 @@ h6 {
 .messages_alert{
   padding-top:1rem;
 }
-/* navbar and footer styling */
 
+/* navbar and footer styling */
 nav,
 footer {
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   font-weight: 100;
   background-color: #272743;
   color: #fafafa;
   letter-spacing: 1px;
 }
-
 .nav-heading {
   padding-top: 0.5em;
-  font-family: Josefin Sans, Helvetica, Arial, sans-serif;
+  font-family: "Josefin Sans", Helvetica, Arial, sans-serif;
 }
-
 .nav-link {
   color: #fafafa;
   font-size: 1.2rem;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  -o-transition: all 0.3s;
   transition: all 0.3s;
 }
-
 .nav-link:hover {
   letter-spacing: 2px;
   color: #fafafa;
 }
-
 .nav_item ::after {
   content: "";
   display: block;
@@ -74,24 +66,19 @@ footer {
   height: 1px;
   background: white;
   background: rgba(255, 255, 255, 0.7);
-  -webkit-transition: width 0.3s;
-  -moz-transition: width 0.3s;
-  -ms-transition: width 0.3s;
-  -o-transition: width 0.3s;
   transition: width 0.3s;
 }
-
 .nav_item :hover::after {
   width: 100%;
 }
 .navbar-toggler {
   color: #fafafa;
 }
-
 .footer-copyright {
   margin: 0;
   background-color: #1f1f35;
 }
+
 
 /* Home page styles */
 .jumbotron {
@@ -100,7 +87,6 @@ footer {
   background-image: url("../images/jumbotron.jpg");
   color: #272743;
 }
-
 .jumbothron-text-background{
   background-color: rgba(255, 255, 255, 0.4);
 }
@@ -109,13 +95,11 @@ footer {
   font-size: 5em;
   color: #eb5e1c;
 }
-
 .space {
   width: 70%;
   margin: auto;
   border-top: solid 1.5px rgba(0, 0, 0, 0.5);
 }
-
 .references {
   padding-top: 8em;
   padding-bottom: 5em;
@@ -124,96 +108,69 @@ footer {
     url("../images/boats.jpg") no-repeat fixed bottom;
   background-color: blue;
   background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
 }
-
 .references-content {
   width: 90%;
   background-color: #fafafa;
 }
-
-
 .checked {
   color: orange; /* rating stars color */
 }
-
 .img-avatar {
   border-radius: 50%;
 }
-
 a:link,
 a:visited {
   text-decoration: none;
 }
-
 a.link-card-boat{
   color: #ff8652;
 }
 
 /* boats - cards and detailed view styles */
-
 .active-navy input[type="text"]:focus:not([readonly]) {
   border: 1px solid #272743;
   box-shadow: 0 0 0 1.3px #272743;
 }
-
 .active-navy input[type="number"]:focus:not([readonly]) {
   border: 1px solid #272743;
   box-shadow: 0 0 0 1.3px #272743;
 }
 .card-item {
   width: 23rem;
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  -moz-transform: scale(1);
-  -o-transform: scale(1);
-  -ms-transform: scale(1);
-  -webkit-transform: scale(1);
   transform: scale(1);
 }
 .card-item:hover {
-  -moz-transform: scale(1.02);
-  -o-transform: scale(1.02);
-  -ms-transform: scale(1.02);
-  -webkit-transform: scale(1.02);
   transform: scale(1.02);
 }
-
 .img-responsive {
   width: 100%;
   height: 16rem;
 }
-
 .img-details {
   height: 18rem;
 }
-
 .details {
   font-size: 1.3rem;
 }
-/* styling calendar */
 
+
+/* styling calendar */
 .table {
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
 }
 .month {
   background-color: #272743;
   color: #fafafa;
 }
-
 .table th.month {
   padding: 3rem 0;
 }
 .weekdays {
   background-color: #ddd;
 }
-
 .table td {
   border: 1px solid grey;
   background-color: #ff8652;
@@ -224,12 +181,10 @@ a.link-card-boat{
 .available.selected {
   background-color: #79a7d3 !important;
 }
- 
 .before_today {
   background-color: #6da06f !important;
   opacity: 0.2;
 }
-
 .not_in_month {
   border: none !important;
   background-color: #ffffff !important;
@@ -239,27 +194,25 @@ a.link-card-boat{
 
 /* boat comments */
 .comment_username{
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   color:#eb5e1c;
 }
 .comment_text{
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   font-size: 1.5rem;
 }
-
 .comment_date{
-  font-family: Maven Pro, Helvetica, Arial, sans-serif;
+  font-family: "Maven Pro", Helvetica, Arial, sans-serif;
   font-size: 0.9rem;
 }
-/* Forms styles */
+
+
+/* Forms login, sign up, password resetstyles */
 
 .password-reset-info {
   width: 50%;
   margin: auto;
 }
-
-/* buttons styles */
-
 .btn-signup {
   /* Sign up button in navbar */
   color: #fafafa;
@@ -270,13 +223,11 @@ a.link-card-boat{
   background: transparent;
   transition: all 0.3s ease 0s;
 }
-
 .btn-signup:hover {
   color: #fafafa;
   background: rgba(58, 133, 191, 0.75);
   border: 2px solid rgba(58, 133, 191, 0.75);
 }
-
 .btn-checkout {
   /* Checkout button */
   font-size: 1.2rem;
@@ -290,26 +241,25 @@ a.link-card-boat{
   background: #272743;
   transition: all 0.3s ease 0s;
 }
-
 .btn-checkout:hover {
   color: #fafafa;
   background: rgba(58, 133, 191, 0.75);
   border: 2px solid rgba(58, 133, 191);
 }
-
 .btn-times {
   /* remove item from card */
   outline: none;
   border: none;
   background-color: transparent;
 }
-
 .btn-orange {
   color: #fafafa;
   background-color: #eb5e1c;
 }
 
+
 /* checkout styles */
+
 .total {
   color: #eb5e1c;
   font-size: 1.5rem;
@@ -317,7 +267,6 @@ a.link-card-boat{
 #remove-cart-item {
   font-size: 1.5rem;
 }
-
 .image-orders {
   width: 10rem;
   height: 6rem;
@@ -330,7 +279,6 @@ a.link-card-boat{
   width: 23rem;
   height: 14rem;
 }
-
 .table td.shopping-hist,
 th.shopping-hist {
   border: 1px solid #dee2e6;
@@ -351,11 +299,9 @@ th.shopping-hist {
   .references-content {
     width: 75%;
   }
-
   .img-details {
     height: 30rem;
   }
-
   .btn-search {
     width: 7rem;
     height: 4rem;
