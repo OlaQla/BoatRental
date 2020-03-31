@@ -2,9 +2,9 @@
 const dateForField = (date) => {
     const calDay = ("0" + date.getDate()).slice(-2);
     const calMonth = ("0" + (date.getMonth() + 1)).slice(-2);
-    const calYear = date.getFullYear()
-    return calYear + "-" + (calMonth) + "-" + (calDay)
-}
+    const calYear = date.getFullYear();
+    return calYear + "-" + (calMonth) + "-" + (calDay);
+};
 
 // A set of booked dated
 const bookedDates = new Set();
@@ -45,7 +45,7 @@ const reloadCalendar = (boat_id, year, month) => {
             $(".selected").removeClass("selected");
             
             $("#calendar").find("td").each(function (index) {
-                $(this).text(data[index].day)
+                $(this).text(data[index].day);
 
                 // Mark cells between start and end dates
                 if (data[index].in_month) {
@@ -54,7 +54,7 @@ const reloadCalendar = (boat_id, year, month) => {
                             $(this).addClass("selected");
                         }
                         else if(!!newEndDate) {
-                            currentCellMillis = (new Date(year, month, data[index].day)).getTime()
+                            currentCellMillis = (new Date(year, month, data[index].day)).getTime();
                             if(currentCellMillis >= newStartDate.getTime() && currentCellMillis <= newEndDate.getTime()) {
                                 $(this).addClass("selected");
                             }
@@ -80,9 +80,9 @@ const reloadCalendar = (boat_id, year, month) => {
 
                 $(".month").text(new Date(year, month).toLocaleString('default', { month: 'long' }));
 
-            })
+            });
     });
-}
+};
 
 // Function resetting all to initial state
 const resetState = () => {
@@ -94,13 +94,13 @@ const resetState = () => {
     $("button[type=submit]").prop("disabled", true);
     $("#startDay").val('');
     $("#endDay").val('');
-}
+};
 
 $(document).ready(function () {
 
 
     // This is calendar movable date to pick year / month
-    date = new Date()
+    date = new Date();
 
     // Get boat if from url
     boat_id = $(window.location.href.split("/")).last()[0];
@@ -124,9 +124,9 @@ $(document).ready(function () {
     // Attach click event to days in currently chosen month that are available
     $(document).on('click', '.in_month.available', function () {
 
-        calDay = $(this).text()
+        calDay = $(this).text();
         calMonth = date.getMonth();
-        calYear = date.getFullYear()
+        calYear = date.getFullYear();
 
         // Mark start date in calendar as selected, set start / end date variables
         if (isFirst) {
@@ -137,7 +137,7 @@ $(document).ready(function () {
             
             // Do not allow for start date earlier than today
             if(newStartDate < today) {
-                resetState()
+                resetState();
                 return;
             } 
 
@@ -150,14 +150,14 @@ $(document).ready(function () {
 
         } else {
             // Pick new end date, swap dates if end date if before start date
-            newEndDate = new Date(calYear, calMonth, calDay)
+            newEndDate = new Date(calYear, calMonth, calDay);
             if (newEndDate > newStartDate) {
-                $("#endDay").val(dateForField(newEndDate))
+                $("#endDay").val(dateForField(newEndDate));
             }
             else {
-                [newStartDate, newEndDate] = [newEndDate, newStartDate]
-                $("#startDay").val(dateForField(newStartDate))
-                $("#endDay").val(dateForField(newEndDate))
+                [newStartDate, newEndDate] = [newEndDate, newStartDate];
+                $("#startDay").val(dateForField(newStartDate));
+                $("#endDay").val(dateForField(newEndDate));
             }
 
             let today = new Date();
@@ -166,7 +166,7 @@ $(document).ready(function () {
             // Do not allow for start date earlier than today, only start date need to be tested
             // because if endDate was earlier they would swap above
             if(newStartDate < today) {
-                resetState()
+                resetState();
                 return;
             }
 
@@ -175,12 +175,12 @@ $(document).ready(function () {
             endMs = newEndDate.getTime();
             if([...bookedDates].find(d => d >= startMs && d <= endMs)) {
                 // state is invalid, perform state reset to get back to selection mode
-                resetState()
+                resetState();
                 return;
             }
 
             // Get all potentially available days in currently selected month
-            const $allAvailable = $(".in_month.available")
+            const $allAvailable = $(".in_month.available");
             
             // Mark all dates between start and end as selected
             $allAvailable.each(function(){
@@ -203,4 +203,4 @@ $(document).ready(function () {
         // Flip isFirst to know is next click first or not
         isFirst = !isFirst;
     });
-})
+});
